@@ -14,7 +14,11 @@ Objetivos
 - Documentar el enfoque conceptual y las decisiones de modelado.
 - Proveer ejemplos y plantillas que ilustren patrones de lógica y arquitectura.
 
+## Modelo Entidad-Relación
 
+A continuación se presenta el diseño de la base de datos para el proyecto:
+
+![Diagrama Entidad Relacion](./docs/diagrama-er.png)
 
 
 
