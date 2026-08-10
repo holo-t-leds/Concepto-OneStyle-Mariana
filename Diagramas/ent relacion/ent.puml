@@ -1,0 +1,128 @@
+@startuml
+hide circle
+skinparam linetype ortho
+skinparam classAttributeIconSize 0
+
+'=========================================
+' ENTIDADES
+'=========================================
+
+entity "roles" as roles {
+    * id_rol : INT <<PK>>
+    --
+    nombre_rol : VARCHAR(50) <<UNIQUE>>
+}
+
+entity "usuarios" as usuarios {
+    * id_usuario : INT <<PK>>
+    --
+    * fk_id_rol : INT <<FK>>
+    nombre : VARCHAR(100)
+    apellido : VARCHAR(100)
+    email : VARCHAR(150) <<UNIQUE>>
+    contrasena : VARCHAR(255)
+    telefono : VARCHAR(20)
+    direccion_envio : TEXT
+    ciudad : VARCHAR(100)
+    estado_usuario : BOOLEAN
+    fecha_registro : DATETIME
+}
+
+entity "categorias" as categorias {
+    * id_categoria : INT <<PK>>
+    --
+    nombre_categoria : VARCHAR(100) <<UNIQUE>>
+    descripcion_categoria : TEXT
+}
+
+entity "productos" as productos {
+    * id_producto : INT <<PK>>
+    --
+    * fk_id_categoria : INT <<FK>>
+    nombre_producto : VARCHAR(150)
+    descripcion_producto : TEXT
+    precio_detallista : DECIMAL(12,2)
+    url_imagen_principal : VARCHAR(255)
+    estado_visibilidad : BOOLEAN
+}
+
+entity "tallas" as tallas {
+    * id_talla : INT <<PK>>
+    --
+    nombre_talla : VARCHAR(10) <<UNIQUE>>
+}
+
+entity "inventario_variantes" as inventario_variantes {
+    * id_variante : INT <<PK>>
+    --
+    * fk_id_producto : INT <<FK>>
+    * fk_id_talla : INT <<FK>>
+    stock_disponible : INT
+    punto_reposicion : INT
+}
+
+entity "estados_pedido" as estados_pedido {
+    * id_estado_pedido : INT <<PK>>
+    --
+    nombre_estado : VARCHAR(50) <<UNIQUE>>
+    descripcion_estado : VARCHAR(255)
+}
+
+entity "pedidos_cabecera" as pedidos_cabecera {
+    * id_pedido : INT <<PK>>
+    --
+    * fk_id_cliente : INT <<FK>>
+    fk_id_vendedora_asig : INT <<FK>>
+    * fk_id_estado_pedido : INT <<FK>>
+    fecha_pedido : DATETIME
+    total_pedido : DECIMAL(12,2)
+    direccion_envio_final : TEXT
+    ciudad_envio_final : VARCHAR(100)
+    url_comprobante_whatsapp : VARCHAR(255)
+}
+
+entity "pedido_detalle" as pedido_detalle {
+    * id_pedido_detalle : INT <<PK>>
+    --
+    * fk_id_pedido : INT <<FK>>
+    * fk_id_variante : INT <<FK>>
+    cantidad_solicitada : INT
+    precio_unitario_venta : DECIMAL(12,2)
+}
+
+entity "logs_auditoria" as logs_auditoria {
+    * id_log : INT <<PK>>
+    --
+    * fk_id_usuario_accion : INT <<FK>>
+    tipo_accion : VARCHAR(100)
+    tabla_afectada : VARCHAR(100)
+    id_registro_afectado : INT
+    valor_anterior : TEXT
+    valor_nuevo : TEXT
+    fecha_accion : DATETIME
+}
+
+entity "preguntas_frecuentes" as preguntas_frecuentes {
+    * id_faq : INT <<PK>>
+    --
+    pregunta : TEXT
+    respuesta : TEXT
+    orden_visualizacion : INT
+}
+
+'=========================================
+' RELACIONES
+'=========================================
+
+roles ||--o{ usuarios : "asigna"
+categorias ||--o{ productos : "clasifica"
+productos ||--o{ inventario_variantes : "posee"
+tallas ||--o{ inventario_variantes : "define"
+usuarios ||--o{ pedidos_cabecera : "realiza (cliente)"
+usuarios ||--o{ pedidos_cabecera : "gestiona (vendedora)"
+estados_pedido ||--o{ pedidos_cabecera : "determina"
+pedidos_cabecera ||--o{ pedido_detalle : "contiene"
+inventario_variantes ||--o{ pedido_detalle : "incluye"
+usuarios ||--o{ logs_auditoria : "ejecuta"
+
+@enduml
