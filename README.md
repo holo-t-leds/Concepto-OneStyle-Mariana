@@ -18,7 +18,7 @@ Objetivos
 
 A continuación se presenta el diseño de la base de datos para el proyecto:
 
-![Diagrama Entidad Relacion](./docs/diagrama-er.png)
+![Diagrama Entidad Relacion](./docs/ent%20rel/entidad.png)
 
 
 
