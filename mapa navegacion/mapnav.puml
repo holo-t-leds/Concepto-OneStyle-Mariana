@@ -1,0 +1,45 @@
+@startmindmap
+!theme crt-amber
+skinparam linetype ortho
+skinparam classAttributeIconSize 0
+
+* G.C.C. OneStyleMariana \n(Sistema de Gestión de Pedidos)
+
+** Acceso Seguro
+*** Registro Público (Clientas)
+*** Inicio de Sesión (Roles: Administradora, Vendedora, Clienta)
+*** Recuperación de Credenciales (Token de 60 min)
+
+** Pagina clientas
+*** Catálogo Dinámico
+**** Filtro de Prendas por Categorías
+**** Detalle del Producto
+***** Selector de Atributos (Talla y Color)
+*** Carrito de Compras
+**** Validación de Stock en Tiempo Real
+**** Adición/Modificación de Cantidades
+*** Formulario de Checkout (Datos de Envío)
+**** Captura de Dirección, Ciudad y Teléfono
+**** Confirmación Asíncrona del Pedido
+**** Redirección con Plantilla de Texto a WhatsApp
+*** Perfil de Usuario (Autenticado)
+**** Mis Datos Predeterminados
+**** Historial de Compras y Estados Logísticos
+
+** PANEL DE CONTROL ADMINISTRATIVO 
+*** Dashboard Operativo
+**** Indicadores Financieros y Métricas de Ventas
+**** Resumen de Actividad por Vendedora
+*** Gestión del Catálogo (CRUD Inventario)
+**** Creación y Edición de Productos
+**** Definición de Variantes (Tallas/Stock Mínimo)
+**** Control Lógico de Visibilidad (Activo / Inactivo)
+*** Módulo de Pedidos y Logística
+**** Control de Ciclo de Vida del Pedido
+**** Modificación Manual de Estados (Pendiente, Confirmado, Despachado, etc.)
+*** Seguridad y Auditoría
+**** Visualización de Logs Cronológicos (Cambios Críticos de Stock y Precios)
+*** Canal Informativo
+**** Gestión de Preguntas Frecuentes (FAQ)
+
+@endmindmap
