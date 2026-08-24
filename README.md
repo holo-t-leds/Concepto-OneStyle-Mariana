@@ -45,8 +45,14 @@ El esquema relacional garantiza la integridad referencial y el soporte a transac
 * <u>**Datos Semilla (`database/seeds.sql`):**</u> Carga la configuración inicial de roles de usuario y categorías base del catálogo[cite: 3].
 
 ---
+## 4. Prototipo Interactivo y Mockups (Figma)
 
-## 4. Estructura del Repositorio
+El diseño de interfaces y la experiencia de usuario (UI/UX) del aplicativo se encuentran prototipados en Figma:
+
+* <u>**Prototipo Interactivo:**</u> [Ver Mockups en Figma](https://www.figma.com/design/Ig7NbeizxVrNrnVWDm0lcA/onestyle?node-id=0-1&t=HpHegNwAzJQoyURV-1)
+
+---
+## 5. Estructura del Repositorio
 
 ```text
 ├── .github/
@@ -87,8 +93,3 @@ El esquema relacional garantiza la integridad referencial y el soporte a transac
 ├── requirements.txt             # Dependencias del proyecto (pytest)
 └── README.md                    # Documentación técnica oficial
 
-## 5. Prototipo Interactivo y Mockups (Figma)
-
-El diseño de interfaces y la experiencia de usuario (UI/UX) del aplicativo se encuentran prototipados en Figma:
-
-* <u>**Prototipo Interactivo:**</u> [Ver Mockups en Figma](https://www.figma.com/design/Ig7NbeizxVrNrnVWDm0lcA/onestyle?node-id=0-1&t=HpHegNwAzJQoyURV-1)
