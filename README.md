@@ -1,7 +1,7 @@
 # G.C.C. OneStyle Mariana — Sistema de Gestión de Pedidos e Inventario (OMS)
 
-<u>**Programa de Formación:**</u> Análisis y Desarrollo de Software (ADSO) — Código 3484008  
-<u>**Fase del Proyecto:**</u> Hacer y Verificar  
+<u>**Programa de Formación:**</u> Análisis y Desarrollo de Software (ADSO) — Código 228118[cite: 1]  
+<u>**Fase del Proyecto:**</u> Hacer y Verificar[cite: 1]  
 <u>**Actividad de Proyecto:**</u> Desarrollar la estructura de datos y la interfaz de usuario del sistema de información[cite: 1]  
 <u>**Competencia:**</u> Evaluar requisitos de la solución de software de acuerdo con metodologías de análisis y estándares[cite: 1]  
 
@@ -17,16 +17,18 @@
 
 ### 2.1. Estructura Jerárquica del Sistema
 
-El mapa de navegación define los flujos de interacción del usuario clasificados por niveles de acceso (público, autenticado y administrativo):
+El mapa de navegación define los flujos de interacción del usuario clasificados por niveles de acceso (público, autenticado y administrativo)[cite: 4]:
 
-![Mapa de Navegación](docs/mapa%20navegacion/mapanavegacion.png)
+<p align="center">
+  <img src="docs/mapa%20navegacion/mapanavegacion.png" alt="Mapa de Navegacion" width="750">
+</p>
 
 ### 2.2. Módulos de la Solución
 
-* <u>**Módulo de Seguridad y Usuarios (`src/auth/`):**</u> Autenticación multi-rol (`Administradora`, `Vendedora`, `Clienta`), control de sesiones, validación de credenciales con hashing seguro y recuperación de acceso.
+* <u>**Módulo de Seguridad y Usuarios (`src/auth/`):**</u> Autenticación multi-rol (`Administradora`, `Vendedora`, `Clienta`), control de sesiones, validación de credenciales con hashing seguro y recuperación de acceso[cite: 4].
 * <u>**Módulo de Catálogo e Inventario (`src/catalogo/`):**</u> Mantenimiento de categorías maestras, gestión de existencias por variantes (talla/color) y control de alertas por punto de reposición.
-* <u>**Módulo de Carrito de Compras (`src/carrito/`):**</u> Validación de disponibilidad de stock en backend, modificación de cantidades, recálculo dinámico de subtotales y vaciado controlado (`RN-CART`).
-* <u>**Módulo de Pedidos y Checkout (`src/pedidos/`):**</u> Captura obligatoria de datos de despacho, cálculo del monto total y generación de enlaces de confirmación para WhatsApp.
+* <u>**Módulo de Carrito de Compras (`src/carrito/`):**</u> Validación de disponibilidad de stock en backend, modificación de cantidades, recálculo dinámico de subtotales y vaciado controlado (`RN-CART`)[cite: 4].
+* <u>**Módulo de Pedidos y Checkout (`src/pedidos/`):**</u> Captura obligatoria de datos de despacho, cálculo del monto total y generación de enlaces de confirmación para WhatsApp[cite: 4].
 * <u>**Módulo de Auditoría y Trazabilidad (`src/auditoria/`):**</u> Registro automático e inmutable de eventos críticos sobre precios, existencias, roles y pedidos[cite: 3].
 
 ---
@@ -35,9 +37,11 @@ El mapa de navegación define los flujos de interacción del usuario clasificado
 
 ### 3.1. Diagrama Entidad-Relación (MER)
 
-El esquema relacional garantiza la integridad referencial y el soporte a transacciones concurrentes:
+El esquema relacional garantiza la integridad referencial y el soporte a transacciones concurrentes[cite: 4]:
 
-![Modelo Entidad Relación](docs/ent%20relacion/entidad.png)
+<p align="center">
+  <img src="docs/ent%20relacion/entidad.png" alt="Modelo Entidad Relacion" width="750">
+</p>
 
 ### 3.2. Scripts SQL de Persistencia
 
@@ -45,28 +49,30 @@ El esquema relacional garantiza la integridad referencial y el soporte a transac
 * <u>**Datos Semilla (`database/seeds.sql`):**</u> Carga la configuración inicial de roles de usuario y categorías base del catálogo[cite: 3].
 
 ---
-## 4. Prototipo Interactivo y Mockups (Figma)
 
-El diseño de interfaces y la experiencia de usuario (UI/UX) del aplicativo se encuentran prototipados en Figma:
+## 4. Prototipo Interactivo y Mockups de Interfaz
 
-* <u>**Prototipo Interactivo:**</u> [Ver Mockups en Figma](https://www.figma.com/design/Ig7NbeizxVrNrnVWDm0lcA/onestyle?node-id=0-1&t=HpHegNwAzJQoyURV-1)
+### 4.1. Enlace al Prototipo Interactivo (Figma)
 
----
-## 5. Interfaces Gráficas y Mockups de Usuario
+El diseño UI/UX del sistema se encuentra disponible para su navegación interactiva en Figma[cite: 4]:
 
-El diseño visual de la plataforma cuenta con prototipos de alta fidelidad para el flujo de interacción del usuario final:
+* <u>**Prototipo en Figma:**</u> [Ver Mockups Interactivos en Figma](https://www.figma.com/design/Ig7NbeizxVrNrnVWDm0lcA/onestyle?node-id=0-1&t=HpHegNwAzJQoyURV-1)[cite: 4]
 
-| Módulo / Vista | Propósito Técnico | Vista Previa |
+### 4.2. Galería de Pantallas Principales
+
+| Vista / Interfaz | Propósito Técnico | Captura de Diseño |
 | :--- | :--- | :---: |
-| **Acceso al Sistema** | Formulario de autenticación y validación de credenciales (`RF-003b`). | `docs/mockups/login.png` |
-| **Catálogo Dinámico** | Visualización general de prendas clasificadas por categorías (`RF-008`). | `docs/mockups/catalogo.png` |
-| **Detalle de Prenda** | Selector de variantes (talla/color) y consulta de stock en tiempo real (`RF-009`). | `docs/mockups/Detalleprenda.png` |
-| **Bolsa de Compras** | Modificación de cantidades, subtotales y vaciado de carrito (`RF-010`, `RF-CART-010`). | `docs/mockups/carrito.png` |
-| **Búsqueda con Resultados** | Filtrado dinámico de prendas por términos clave (`RF-008`). | `docs/mockups/busquedaexitosa.png` |
-| **Búsqueda sin Resultados** | Estado vacío con retroalimentación y sugerencias al usuario (`RF-008`). | `docs/mockups/busquedasinresultados.png` |
-| **Página de Error (404)** | Manejo de rutas inexistentes y redirección amigable (`RNF-003`). | `docs/mockups/404.png` |
+| **Inicio de Sesión** | Acceso seguro multi-rol (`RF-003b`)[cite: 4]. | <img src="docs/mockups/login.png" width="300"> |
+| **Catálogo Dinámico** | Visualización por categorías (`RF-008`)[cite: 4]. | <img src="docs/mockups/catalogo.png" width="300"> |
+| **Detalle de Prenda** | Selector de talla, color y stock (`RF-009`)[cite: 4]. | <img src="docs/mockups/Detalleprenda.png" width="300"> |
+| **Bolsa de Compras** | Control y vaciado de carrito (`RF-010`)[cite: 4]. | <img src="docs/mockups/carrito.png" width="300"> |
+| **Búsqueda con Éxito** | Filtro dinámico de prendas (`RF-008`)[cite: 4]. | <img src="docs/mockups/busquedaexitosa.png" width="300"> |
+| **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`)[cite: 4]. | <img src="docs/mockups/busquedasinresultados.png" width="300"> |
+| **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`)[cite: 4]. | <img src="docs/mockups/404.png" width="300"> |
+
 ---
-## 6. Estructura del Repositorio
+
+## 5. Estructura del Repositorio
 
 ```text
 ├── .github/
@@ -79,9 +85,18 @@ El diseño visual de la plataforma cuenta con prototipos de alta fidelidad para 
 │   ├── ent relacion/
 │   │   ├── ent.puml             # Código fuente PlantUML del Modelo Entidad-Relación
 │   │   └── entidad.png          # Renderizado visual del MER
-│   └── mapa navegacion/
-│       ├── mapnav.puml          # Código fuente PlantUML de navegación (Mindmap)
-│       └── mapanavegacion.png   # Renderizado visual del mapa de navegación
+│   ├── mapa navegacion/
+│   │   ├── mapnav.puml          # Código fuente PlantUML de navegación (Mindmap)
+│   │   └── mapanavegacion.png   # Renderizado visual del mapa de navegación
+│   └── mockups/                 # Diseños de alta fidelidad exportados de Figma
+│       ├── 404.png
+│       ├── Detalleprenda.png
+│       ├── Html.png
+│       ├── busquedaexitosa.png
+│       ├── busquedasinresultados.png
+│       ├── carrito.png
+│       ├── catalogo.png
+│       └── login.png
 ├── src/
 │   ├── __init__.py
 │   ├── auditoria/               # Lógica de trazas y logs transaccionales
@@ -106,4 +121,3 @@ El diseño visual de la plataforma cuenta con prototipos de alta fidelidad para 
 ├── Matriz de requisitos         # Enlace directo a la Matriz de Trazabilidad
 ├── requirements.txt             # Dependencias del proyecto (pytest)
 └── README.md                    # Documentación técnica oficial
-
