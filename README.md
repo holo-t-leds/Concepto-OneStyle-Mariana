@@ -52,7 +52,21 @@ El diseño de interfaces y la experiencia de usuario (UI/UX) del aplicativo se e
 * <u>**Prototipo Interactivo:**</u> [Ver Mockups en Figma](https://www.figma.com/design/Ig7NbeizxVrNrnVWDm0lcA/onestyle?node-id=0-1&t=HpHegNwAzJQoyURV-1)
 
 ---
-## 5. Estructura del Repositorio
+## 5. Interfaces Gráficas y Mockups de Usuario
+
+El diseño visual de la plataforma cuenta con prototipos de alta fidelidad para el flujo de interacción del usuario final:
+
+| Módulo / Vista | Propósito Técnico | Vista Previa |
+| :--- | :--- | :---: |
+| **Acceso al Sistema** | Formulario de autenticación y validación de credenciales (`RF-003b`). | `docs/mockups/login.png` |
+| **Catálogo Dinámico** | Visualización general de prendas clasificadas por categorías (`RF-008`). | `docs/mockups/catalogo.png` |
+| **Detalle de Prenda** | Selector de variantes (talla/color) y consulta de stock en tiempo real (`RF-009`). | `docs/mockups/Detalleprenda.png` |
+| **Bolsa de Compras** | Modificación de cantidades, subtotales y vaciado de carrito (`RF-010`, `RF-CART-010`). | `docs/mockups/carrito.png` |
+| **Búsqueda con Resultados** | Filtrado dinámico de prendas por términos clave (`RF-008`). | `docs/mockups/busquedaexitosa.png` |
+| **Búsqueda sin Resultados** | Estado vacío con retroalimentación y sugerencias al usuario (`RF-008`). | `docs/mockups/busquedasinresultados.png` |
+| **Página de Error (404)** | Manejo de rutas inexistentes y redirección amigable (`RNF-003`). | `docs/mockups/404.png` |
+---
+## 6. Estructura del Repositorio
 
 ```text
 ├── .github/
