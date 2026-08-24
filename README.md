@@ -86,6 +86,7 @@ El esquema relacional garantiza la integridad referencial y el soporte a transac
 ├── Matriz de requisitos         # Enlace directo a la Matriz de Trazabilidad
 ├── requirements.txt             # Dependencias del proyecto (pytest)
 └── README.md                    # Documentación técnica oficial
+
 ## 5. Prototipo Interactivo y Mockups (Figma)
 
 El diseño de interfaces y la experiencia de usuario (UI/UX) del aplicativo se encuentran prototipados en Figma:
