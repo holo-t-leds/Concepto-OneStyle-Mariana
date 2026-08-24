@@ -71,8 +71,14 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`)[cite: 4]. | <img src="docs/mockups/404.png" width="300"> |
 
 ---
+## 5. Matriz de Requisitos y Trazabilidad
 
-## 5. Estructura del Repositorio
+El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (RF), Requisitos No Funcionales (RNF bajo norma ISO/IEC 25010), Criterios de Aceptación y Casos de Prueba (Caja Blanca, Caja Negra e Integración) se gestionan de manera centralizada en la hoja de cálculo oficial:
+
+* 🔗 <u>**Enlace Oficial:**</u> [Consultar Matriz de Trazabilidad y Requisitos en Google Sheets](https://docs.google.com/spreadsheets/d/1-zfgbSbrLl8uvnGb2gGCj1UpFA3TqOewWFdeeNKSH_s/edit?usp=sharing)
+---
+
+## 6. Estructura del Repositorio
 
 ```text
 ├── .github/
