@@ -1,6 +1,6 @@
 # G.C.C. OneStyle Mariana — Sistema de Gestión de Pedidos e Inventario (OMS)
 
-<u>**Programa de Formación:**</u> Análisis y Desarrollo de Software (ADSO) — Código 228118  
+<u>**Programa de Formación:**</u> Análisis y Desarrollo de Software (ADSO) — Código 3484008  
 <u>**Fase del Proyecto:**</u> Hacer y Verificar  
 <u>**Actividad de Proyecto:**</u> Desarrollar la estructura de datos y la interfaz de usuario del sistema de información[cite: 1]  
 <u>**Competencia:**</u> Evaluar requisitos de la solución de software de acuerdo con metodologías de análisis y estándares[cite: 1]  
