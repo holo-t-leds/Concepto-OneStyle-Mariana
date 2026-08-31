@@ -1,0 +1,42 @@
+@startuml
+|USUARIO|
+start
+:Ingresa correo\ny contraseña;
+
+|SISTEMA|
+:Validar\ncredenciales;
+
+|BASE DE DATOS|
+:Verificar usuario\nen la base de datos;
+
+|SISTEMA|
+if (¿Credenciales\ncorrectas?) then (No)
+    :Registrar intento\nfallido;
+    :Mostrar\n"Credenciales\nincorrectas";
+    stop
+else (Sí)
+    :Consultar rol\ndel usuario;
+    
+    |BASE DE DATOS|
+    :Obtener rol y\nestado del usuario;
+    
+    |SISTEMA|
+    if (¿Usuario\nactivo?) then (No)
+        :Mostrar\n"Usuario\ninactivo";
+        stop
+    else (Sí)
+        :Crear sesión\n(token);
+        :Registrar\ninicio de sesión;
+        :Identificar\nrol;
+        switch (¿Qué rol\ntiene?)
+        case ( Cliente )
+            :Cliente:\nPágina principal /\ncatálogo;
+        case ( Vendedora )
+            :Vendedora:\nPanel de\nvendedora;
+        case ( Administradora )
+            :Administradora:\nPanel\nadministrativo;
+        endswitch
+        stop
+    endif
+endif
+@enduml
