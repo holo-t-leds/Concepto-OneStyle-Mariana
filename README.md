@@ -66,7 +66,7 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`). | ![Sin Resultados](<docs/mockups/busquedasinresultados.png>) |
 | **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`). | ![Página de Error (404)](<docs/mockups/404.png>) |
 
-### 4.3. Casos de Uso y BPMN
+### 4.3. Casos de Uso, BPMN y Diagrama de actividades
 **Casos de uso**
 * <u>**Documento:**</u> [Ver Casos de Uso en Google sheets](https://docs.google.com/document/d/1SimBp-0BJighWeZRdFHGI5peXwmv6t6e1VyrG6NXkP0/edit?usp=sharing)
 **Diagrama de Casos de Uso:**
@@ -74,6 +74,9 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 
 **Diagrama BPMN:**
 ![BPMN](<docs/Bpmn/bpmn.drawio.png>)
+
+**Diagrama de actividades:**
+![diag](<docs/diagramaactividades/act%20diag.png>)
 
 ---
 ## 5. Matriz de Requisitos y Trazabilidad
