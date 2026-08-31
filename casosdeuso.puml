@@ -1,0 +1,128 @@
+@startuml Diagrama_Casos_de_Uso_Ecommerce_OMS
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam actorStyle awesome
+
+' Definición de Estilos Visuales
+skinparam usecase {
+    BackgroundColor #FFFFFF
+    BorderColor #2B6CB0
+    ArrowColor #2D3748
+    FontName Arial
+    FontSize 11
+}
+
+skinparam actor {
+    BackgroundColor #EBF8FF
+    BorderColor #2B6CB0
+    FontName Arial
+    FontSize 11
+}
+
+skinparam rectangle {
+    BackgroundColor #F8FAFC
+    BorderColor #CBD5E0
+    FontName Arial
+    FontSize 12
+    FontStyle bold
+}
+
+' ==========================================
+' ACTORES DEL SISTEMA
+' ==========================================
+actor "Usuario\n(No Autenticado)" as user_anon
+actor "Clienta\n(Registrada)" as clienta
+actor "Vendedora\n(Operativa)" as vendedora
+actor "Administradora\n(Superusuario)" as admin
+
+' Jerarquía / Generalización de Actores
+vendedora -up-|> user_anon
+clienta -up-|> user_anon
+admin -up-|> vendedora
+
+' Actor Secundario Externo
+actor "Servicio WhatsApp\n(API / Web)" as whatsapp <<Secondary System>>
+
+' ==========================================
+' LÍMITE DEL SISTEMA (BOUNDARY)
+' ==========================================
+rectangle "Sistema E-commerce & Panel OMS" {
+
+    ' ------------------------------------------
+    ' MÓDULO 1: SEGURIDAD Y CONTROL DE ACCESO
+    ' ------------------------------------------
+    package "Módulo 1: Seguridad y Usuarios" {
+        usecase "CU-001: Iniciar Sesión (RBAC)" as CU01
+        usecase "CU-002: Gestionar Personal (CRUD)" as CU02
+        usecase "Validar Credenciales y Hash" as CU01_Val
+        usecase "Auditar Acceso (logs_auditoria)" as CU01_Log
+        usecase "Desactivar Personal (Borrado Lógico)" as CU02_Desact
+
+        CU01 ..> CU01_Val : <<include>>
+        CU01 ..> CU01_Log : <<include>>
+        CU02 <.. CU02_Desact : <<extend>> \n (Si es baja lógica)
+    }
+
+    ' ------------------------------------------
+    ' MÓDULO 2: CATÁLOGO E INVENTARIO
+    ' ------------------------------------------
+    package "Módulo 2: Catálogo e Inventario" {
+        usecase "CU-003: Registrar Prenda con Variantes" as CU03
+        usecase "CU-004: Controlar Visibilidad de Producto" as CU04
+        usecase "Configurar Matriz Talla / Color" as CU03_Matriz
+        usecase "Registrar Auditoría de Producto" as CU_Auditoria
+
+        CU03 ..> CU03_Matriz : <<include>>
+        CU03 ..> CU_Auditoria : <<include>>
+        CU04 ..> CU_Auditoria : <<include>>
+    }
+
+    ' ------------------------------------------
+    ' MÓDULO 3: CARRITO Y PEDIDOS (OMS)
+    ' ------------------------------------------
+    package "Módulo 3: Carrito y Pedidos (OMS)" {
+        usecase "CU-005: Gestionar Carrito de Compras" as CU05
+        usecase "CU-006: Registrar Pedido y Despacho" as CU06
+        usecase "CU-007: Controlar Ciclo de Vida del Pedido" as CU07
+        usecase "Validar Stock en Tiempo Real" as CU05_Stock
+        usecase "Redirigir con Resumen a WhatsApp" as CU06_WA
+        usecase "Reintegrar Stock por Cancelación" as CU07_Reintegrar
+
+        CU05 ..> CU05_Stock : <<include>>
+        CU06 ..> CU06_WA : <<include>>
+        CU07 <.. CU07_Reintegrar : <<extend>> \n (Si pedido es cancelado)
+    }
+
+    ' ------------------------------------------
+    ' MÓDULO 4: SOPORTE Y PREGUNTAS FRECUENTES
+    ' ------------------------------------------
+    package "Módulo 4: Soporte y FAQ" {
+        usecase "CU-008: Consultar y Filtrar FAQ" as CU08
+        usecase "CU-009: Gestionar Preguntas Frecuentes" as CU09
+    }
+}
+
+' ==========================================
+' ASOCIACIONES: ACTORES -> CASOS DE USO
+' ==========================================
+
+' Seguridad y Usuarios
+user_anon --> CU01
+admin --> CU02
+
+' Catálogo e Inventario
+vendedora --> CU03
+vendedora --> CU04
+
+' Carrito y Pedidos
+clienta --> CU05
+clienta --> CU06
+vendedora --> CU07
+CU06_WA --> whatsapp : <<Notifica / Envía Payload>>
+
+' Soporte y FAQ
+user_anon --> CU08
+vendedora --> CU09
+
+@enduml
