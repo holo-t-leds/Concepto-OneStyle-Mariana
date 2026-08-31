@@ -19,9 +19,7 @@
 
 El mapa de navegación define los flujos de interacción del usuario clasificados por niveles de acceso (público, autenticado y administrativo):
 
-<p align="center">
-  <img src="docs/mapa%20navegacion/mapanavegacion.png" alt="Mapa de Navegacion" width="750">
-</p>
+![Mapa de Navegacion](<docs/mapa navegacion/mapanavegacion.png>)
 
 ### 2.2. Módulos de la Solución
 
@@ -39,9 +37,7 @@ El mapa de navegación define los flujos de interacción del usuario clasificado
 
 El esquema relacional garantiza la integridad referencial y el soporte a transacciones concurrentes:
 
-<p align="center">
-  <img src="docs/ent%20relacion/entidad.png" alt="Modelo Entidad Relacion" width="750">
-</p>
+![Modelo Entidad Relacion](<docs/ent relacion/entidad.png>)
 
 ### 3.2. Scripts SQL de Persistencia
 
@@ -62,13 +58,21 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 
 | Vista / Interfaz | Propósito Técnico | Captura de Diseño |
 | :--- | :--- | :---: |
-| **Inicio de Sesión** | Acceso seguro multi-rol (`RF-003b`). | <img src="docs/mockups/login.png" width="300"> |
-| **Catálogo Dinámico** | Visualización por categorías (`RF-008`). | <img src="docs/mockups/catalogo.png" width="300"> |
-| **Detalle de Prenda** | Selector de talla, color y stock (`RF-009`). | <img src="docs/mockups/Detalleprenda.png" width="300"> |
-| **Bolsa de Compras** | Control y vaciado de carrito (`RF-010`. | <img src="docs/mockups/carrito.png" width="300"> |
-| **Búsqueda con Éxito** | Filtro dinámico de prendas (`RF-008`). | <img src="docs/mockups/busquedaexitosa.png" width="300"> |
-| **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`). | <img src="docs/mockups/busquedasinresultados.png" width="300"> |
-| **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`). | <img src="docs/mockups/404.png" width="300"> |
+| **Inicio de Sesión** | Acceso seguro multi-rol (`RF-003b`). | ![Inicio de Sesión](<docs/mockups/login.png>) |
+| **Catálogo Dinámico** | Visualización por categorías (`RF-008`). | ![Catálogo Dinámico](<docs/mockups/catalogo.png>) |
+| **Detalle de Prenda** | Selector de talla, color y stock (`RF-009`). | ![Detalle de Prenda](<docs/mockups/Detalleprenda.png>) |
+| **Bolsa de Compras** | Control y vaciado de carrito (`RF-010`). | ![Bolsa de Compras](<docs/mockups/carrito.png>) |
+| **Búsqueda con Éxito** | Filtro dinámico de prendas (`RF-008`). | ![Búsqueda con Éxito](<docs/mockups/busquedaexitosa.png>) |
+| **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`). | ![Sin Resultados](<docs/mockups/busquedasinresultados.png>) |
+| **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`). | ![Página de Error (404)](<docs/mockups/404.png>) |
+
+### 4.3. Casos de Uso y BPMN
+
+**Diagrama de Casos de Uso:**
+![Casos de Uso](<docs/Casos de uso/casosdesu.png>)
+
+**Diagrama BPMN:**
+![BPMN](<docs/Bpmn/bpmn.drawio.png>)
 
 ---
 ## 5. Matriz de Requisitos y Trazabilidad
@@ -76,6 +80,7 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (RF), Requisitos No Funcionales (RNF bajo norma ISO/IEC 25010), Criterios de Aceptación y Casos de Prueba (Caja Blanca, Caja Negra e Integración) se gestionan de manera centralizada en la hoja de cálculo oficial:
 
 * 🔗 <u>**Enlace Oficial:**</u> [Consultar Matriz de Trazabilidad y Requisitos en Google Sheets](https://docs.google.com/spreadsheets/d/1-zfgbSbrLl8uvnGb2gGCj1UpFA3TqOewWFdeeNKSH_s/edit?usp=sharing)
+* 📄 <u>**Matriz de Requisitos:**</u> [Ver documento](https://docs.google.com/spreadsheets/d/1-zfgbSbrLl8uvnGb2gGCj1UpFA3TqOewWFdeeNKSH_s/edit?usp=sharing)
 ---
 
 ## 6. Estructura del Repositorio
@@ -88,6 +93,13 @@ El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (R
 │   ├── schema.sql               # Script DDL de creación de tablas en MySQL / MariaDB
 │   └── seeds.sql                # Inserción de datos maestros iniciales
 ├── docs/
+│   ├── Bpmn/                      # Diagramas de Modelado de Procesos de Negocio
+│   │   ├── Bpmn FAQ.png           # Preguntas frecuentes y guía BPMN
+│   │   ├── bpmn                   # Archivo de configuración/exportación
+│   │   └── bpmn.drawio.png        # Diagrama BPMN principal exportado de Draw.io
+│   ├── Casos de uso/              # Modelos de Interacción del Sistema
+│   │   ├── casosdesu.png          # Renderizado del Diagrama de Casos de Uso
+│   │   └── casosdeuso.puml        # Código fuente PlantUML de Casos de Uso
 │   ├── ent relacion/
 │   │   ├── ent.puml             # Código fuente PlantUML del Modelo Entidad-Relación
 │   │   └── entidad.png          # Renderizado visual del MER
