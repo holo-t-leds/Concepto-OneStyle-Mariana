@@ -109,9 +109,9 @@ El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (R
 │   ├── Casos de uso/              # Modelos de Interacción del Sistema
 │   │   ├── casosdesu.png          # Renderizado del Diagrama de Casos de Uso
 │   │   └── casosdeuso.puml        # Código fuente PlantUML de Casos de Uso
-│   ├── diagramaactividades/              # Modelos de Interacción del Sistema
-│   │   ├── act diag.png          # Renderizado del Diagrama de Casos de Uso
-│   │   └── actdi.puml        # Código fuente PlantUML de Casos de Uso
+│   ├── diagramaactividades/       # Modelos de Interacción del Sistema
+│   │   ├── act diag.png           # Renderizado del Diagrama de actividades
+│   │   └── actdi.puml             # Código fuente PlantUML de actividades
 │   ├── ent relacion/
 │   │   ├── ent.puml             # Código fuente PlantUML del Modelo Entidad-Relación
 │   │   └── entidad.png          # Renderizado visual del MER
