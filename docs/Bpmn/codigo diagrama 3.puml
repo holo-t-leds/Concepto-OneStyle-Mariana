@@ -1,0 +1,172 @@
+@startuml
+
+title DIAGRAMA BPMN - GESTIÓN Y SEGUIMIENTO DE PEDIDO
+
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam ArrowColor black
+
+skinparam activity {
+    BackgroundColor white
+    BorderColor black
+    FontColor black
+}
+
+' =========================
+' INICIO DEL PROCESO
+' =========================
+
+|Cliente|
+start
+:1. Realizar pedido;
+
+' =========================
+' REGISTRO Y VALIDACIÓN
+' =========================
+
+|Ventas|
+:2. Registrar pedido en el sistema;
+
+|Sistema|
+:Registrar pedido y datos del cliente;
+
+|Ventas|
+:3. Validar disponibilidad de productos
+y datos del cliente;
+
+if (¿Pedido válido?) then (Sí)
+
+    ' =========================
+    ' CONFIRMACIÓN DEL PEDIDO
+    ' =========================
+
+    :5. Confirmar pedido
+    y generar orden;
+
+    |Sistema|
+    :Generar orden y número
+    de seguimiento;
+
+    |Cliente|
+    :8. Recibir confirmación del pedido
+    y número de seguimiento;
+
+    ' =========================
+    ' PREPARACIÓN DEL PEDIDO
+    ' =========================
+
+    |Almacén|
+    :6. Preparar pedido
+    (Picking y empaque);
+
+    if (¿Todo en orden?) then (Sí)
+
+        ' =========================
+        ' DESPACHO Y TRANSPORTE
+        ' =========================
+
+        |Sistema|
+        :Actualizar estado del pedido
+        a Preparación;
+
+        |Logística / Transporte|
+        :9. Transportar pedido;
+
+        |Sistema|
+        :Actualizar estado del pedido
+        a Enviado;
+
+        |Logística / Transporte|
+        :10. Actualizar estado del envío;
+
+        :11. Entregar pedido
+        al cliente;
+
+        |Sistema|
+        :Actualizar estado del pedido
+        a Entregado;
+
+        ' =========================
+        ' SEGUIMIENTO Y RECEPCIÓN
+        ' =========================
+
+        |Cliente|
+        :12. Consultar estado del pedido;
+
+        if (¿Pedido recibido conforme?) then (Sí)
+
+            :14. Confirmar recepción;
+
+            |Sistema|
+            :Actualizar estado del pedido
+            a Cerrado;
+
+            :Cerrar pedido;
+
+            stop
+
+        else (No)
+
+            ' =========================
+            ' GESTIÓN DE NOVEDADES
+            ' =========================
+
+            :13. Reportar novedad;
+
+            |Ventas|
+            :Gestionar novedad
+            con el cliente;
+
+            |Sistema|
+            :Actualizar estado del pedido
+            después de gestionar la novedad;
+
+            :Cerrar pedido;
+
+            stop
+
+        endif
+
+    else (No)
+
+        ' =========================
+        ' FALTANTES O INCONSISTENCIAS
+        ' =========================
+
+        :6a. Reportar faltantes
+        o inconsistencias;
+
+        |Ventas|
+        :4. Informar al cliente
+        y ajustar pedido;
+
+        |Sistema|
+        :Actualizar información
+        del pedido;
+
+        |Ventas|
+        :Validar nuevamente
+        el pedido;
+
+        stop
+
+    endif
+
+else (No)
+
+    ' =========================
+    ' PEDIDO NO VÁLIDO
+    ' =========================
+
+    :4. Informar al cliente
+    y ajustar pedido;
+
+    |Sistema|
+    :Actualizar información
+    del pedido;
+
+    stop
+
+endif
+
+@enduml
