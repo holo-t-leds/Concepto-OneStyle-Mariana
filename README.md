@@ -109,6 +109,9 @@ El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (R
 │   ├── Casos de uso/              # Modelos de Interacción del Sistema
 │   │   ├── casosdesu.png          # Renderizado del Diagrama de Casos de Uso
 │   │   └── casosdeuso.puml        # Código fuente PlantUML de Casos de Uso
+│   ├── diagramaactividades/              # Modelos de Interacción del Sistema
+│   │   ├── act diag.png          # Renderizado del Diagrama de Casos de Uso
+│   │   └── actdi.puml        # Código fuente PlantUML de Casos de Uso
 │   ├── ent relacion/
 │   │   ├── ent.puml             # Código fuente PlantUML del Modelo Entidad-Relación
 │   │   └── entidad.png          # Renderizado visual del MER
@@ -116,14 +119,15 @@ El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (R
 │   │   ├── mapnav.puml          # Código fuente PlantUML de navegación (Mindmap)
 │   │   └── mapanavegacion.png   # Renderizado visual del mapa de navegación
 │   └── mockups/                 # Diseños de alta fidelidad exportados de Figma
-│       ├── 404.png
-│       ├── Detalleprenda.png
-│       ├── Html.png
-│       ├── busquedaexitosa.png
-│       ├── busquedasinresultados.png
-│       ├── carrito.png
-│       ├── catalogo.png
-│       └── login.png
+│   │   ├── 404.png
+│   │   ├── Detalleprenda.png
+│   │   ├── Html.png
+│   │   ├── busquedaexitosa.png
+│   │   ├── busquedasinresultados.png
+│   │   ├── carrito.png
+│   │   ├── catalogo.png
+│   │   └── login.png
+│   └── board.jpg                 # Imagen Storyboard
 ├── src/
 │   ├── __init__.py
 │   ├── auditoria/               # Lógica de trazas y logs transaccionales
