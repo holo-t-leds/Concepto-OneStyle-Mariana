@@ -1,0 +1,118 @@
+<mxfile host="app.diagrams.net" agent="Gemini">
+  <diagram id="BPMN_Ecommerce" name="Proceso E-Commerce BPMN">
+    <mxGraphModel dx="1229" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pool_1" parent="1" style="swimlane;html=1;childLayout=stackLayout;horizontal=0;startSize=30;horizontalStack=0;fillColor=#f8f9fa;strokeColor=#333333;fontStyle=1;fontSize=14;" value="Proceso E-Commerce: Compra, Inventario y Pedidos" vertex="1">
+          <mxGeometry height="840" width="1080" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_clienta" parent="pool_1" style="swimlane;html=1;horizontal=0;startSize=30;fillColor=#ebf5fb;strokeColor=#2c3e50;fontStyle=1;fontSize=12;" value="Clienta (Front-End Público)" vertex="1">
+          <mxGeometry height="240" width="1050" x="30" as="geometry" />
+        </mxCell>
+        <mxCell id="start_1" parent="lane_clienta" style="ellipse;whiteSpace=wrap;html=1;fillColor=#27ae60;strokeColor=#1e8449;fontColor=#ffffff;fontStyle=1;" value="Inicio" vertex="1">
+          <mxGeometry height="50" width="50" x="50" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="task_c1" parent="lane_clienta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Navegar Catálogo Público&#xa;(RF-008)" vertex="1">
+          <mxGeometry height="60" width="120" x="140" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="task_c2" parent="lane_clienta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Seleccionar Producto,&#xa;Talla y Color (RF-009)" vertex="1">
+          <mxGeometry height="60" width="130" x="290" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="task_c3" parent="lane_clienta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Adicionar al Carrito&#xa;(RF-010)" vertex="1">
+          <mxGeometry height="60" width="120" x="450" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="task_c4" parent="lane_clienta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Diligenciar Datos de&#xa;Despacho (RF-011)" vertex="1">
+          <mxGeometry height="60" width="130" x="690" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="task_c5" parent="lane_clienta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Enviar Mensaje de&#xa;Compra por WhatsApp" vertex="1">
+          <mxGeometry height="60" width="130" x="870" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_sistema" parent="pool_1" style="swimlane;html=1;horizontal=0;startSize=30;fillColor=#e8f8f5;strokeColor=#2c3e50;fontStyle=1;fontSize=12;" value="Sistema (Backend &amp; Base de Datos)" vertex="1">
+          <mxGeometry height="240" width="1050" x="30" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="gw_sys1" parent="lane_sistema" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fcf3cf;strokeColor=#b7950b;fontStyle=1;" value="¿Hay&#xa;Stock?" vertex="1">
+          <mxGeometry height="60" width="60" x="480" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="end_no_stock" parent="lane_sistema" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e74c3c;strokeColor=#c0392b;fontColor=#ffffff;fontStyle=1;" value="Agotado" vertex="1">
+          <mxGeometry height="50" width="50" x="485" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="task_s1" parent="lane_sistema" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Crear Pedido y Restar&#xa;Stock (RF-ORD-001)" vertex="1">
+          <mxGeometry height="60" width="130" x="690" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="task_s2" parent="lane_sistema" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Generar URL WhatsApp&#xa;y Auditoría (RF-001)" vertex="1">
+          <mxGeometry height="60" width="130" x="870" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_admin" parent="pool_1" style="swimlane;html=1;horizontal=0;startSize=30;fillColor=#fef9e7;strokeColor=#2c3e50;fontStyle=1;fontSize=12;" value="Administradora / Vendedora (Panel Admin)" vertex="1">
+          <mxGeometry height="360" width="1050" x="30" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="task_a1" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Recibir Notificación&#xa;y Validar Pago" vertex="1">
+          <mxGeometry height="60" width="130" x="140" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="gw_admin1" parent="lane_admin" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fcf3cf;strokeColor=#b7950b;fontStyle=1;" value="¿Pago&#xa;OK?" vertex="1">
+          <mxGeometry height="60" width="60" x="320" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="task_a2" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Estado &#39;Despachado&#39;&#xa;(RF-012)" vertex="1">
+          <mxGeometry height="60" width="130" x="440" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="task_a3" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Estado &#39;Cancelado&#39; y&#xa;Revertir Stock" vertex="1">
+          <mxGeometry height="60" width="130" x="440" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="task_a4" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1b4f72;" value="Gestión de Catálogo,&#xa;Usuarios y Reportes" vertex="1">
+          <mxGeometry height="60" width="140" x="630" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="end_main" parent="lane_admin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e74c3c;strokeColor=#c0392b;fontColor=#ffffff;fontStyle=1;" value="Fin" vertex="1">
+          <mxGeometry height="50" width="50" x="820" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" edge="1" parent="pool_1" source="start_1" target="task_c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" edge="1" parent="pool_1" source="task_c1" target="task_c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" edge="1" parent="pool_1" source="task_c2" target="task_c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" edge="1" parent="pool_1" source="task_c3" target="gw_sys1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" edge="1" parent="pool_1" source="gw_sys1" target="end_no_stock" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" edge="1" parent="pool_1" source="gw_sys1" target="task_c4" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" edge="1" parent="pool_1" source="task_c4" target="task_s1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" edge="1" parent="pool_1" source="task_s1" target="task_s2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" edge="1" parent="pool_1" source="task_s2" target="task_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10" edge="1" parent="pool_1" source="task_c5" target="task_a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge11" edge="1" parent="pool_1" source="task_a1" target="gw_admin1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12" edge="1" parent="pool_1" source="gw_admin1" target="task_a2" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge13" edge="1" parent="pool_1" source="gw_admin1" target="task_a3" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge14" edge="1" parent="pool_1" source="task_a2" target="task_a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge15" edge="1" parent="pool_1" source="task_a3" target="task_a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge16" edge="1" parent="pool_1" source="task_a4" target="end_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

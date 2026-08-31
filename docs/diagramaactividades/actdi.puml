@@ -1,0 +1,50 @@
+@startuml
+skinparam activity {
+  BackgroundColor #EBF8FF
+  BorderColor #2B6CB0
+  ArrowColor #2D3748
+}
+
+partition "Clienta (Frontend)" {
+    start
+    :Explorar Catálogo;
+    :Seleccionar Variantes (Talla/Color);
+    :Agregar al Carrito;
+    :Validar Stock (CU-005);
+    
+    if (¿Stock Disponible?) then (No)
+        :Mostrar Error;
+        stop
+    else (Sí)
+        :Definir Cantidad;
+        :Ingresar Datos de Envío;
+        :Confirmar Pedido (CU-006);
+    endif
+}
+
+partition "Sistema (Backend)" {
+    :Guardar Cabecera y Detalle;
+    :Descontar Inventario;
+    :Registrar Estado 'Pendiente de Pago';
+    :Vaciar Carrito;
+}
+
+partition "WhatsApp" {
+    :Generar Mensaje con Detalles;
+    :Redirección a WhatsApp API;
+}
+
+partition "Vendedora (Panel OMS)" {
+    :Recepción de Mensaje;
+    :Acceder a Gestión de Pedidos (CU-007);
+    :Validar Pago;
+    
+    if (¿Pago Confirmado?) then (Sí)
+        :Cambiar Estado a 'Aprobado';
+    else (No/Cancelar)
+        :Cambiar Estado a 'Cancelado';
+        :Reintegrar Stock;
+    endif
+    stop
+}
+@enduml
