@@ -52,7 +52,7 @@ El esquema relacional garantiza la integridad referencial y el soporte a transac
 
 El diseño UI/UX del sistema se encuentra disponible para su navegación interactiva en Figma:
 
-* <u>**Prototipo en Figma:**</u> [Ver Mockups Interactivos en Figma](https://www.figma.com/design/Ig7NbeizxVrNrnVWDm0lcA/onestyle?node-id=0-1&t=HpHegNwAzJQoyURV-1)[cite: 4]
+* <u>**Prototipo en Figma:**</u> [Ver Mockups Interactivos en Figma](https://www.figma.com/design/Ig7NbeizxVrNrnVWDm0lcA/onestyle?node-id=0-1&t=HpHegNwAzJQoyURV-1)
 
 ### 4.2. Galería de Pantallas Principales
 
@@ -67,7 +67,8 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`). | ![Página de Error (404)](<docs/mockups/404.png>) |
 
 ### 4.3. Casos de Uso y BPMN
-
+**Casos de uso**
+* <u>**Documento:**</u> [Ver Casos de Uso en Google sheets](https://docs.google.com/document/d/1SimBp-0BJighWeZRdFHGI5peXwmv6t6e1VyrG6NXkP0/edit?usp=sharing)
 **Diagrama de Casos de Uso:**
 ![Casos de Uso](<docs/Casos de uso/casosdesu.png>)
 
