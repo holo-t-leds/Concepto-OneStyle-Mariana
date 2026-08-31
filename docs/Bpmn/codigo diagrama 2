@@ -1,0 +1,54 @@
+@startuml
+|USUARIO|
+start
+:Selecciona\n"¿Olvidaste tu\ncontraseña?";
+:Ingresa correo\nelectrónico;
+
+|SISTEMA|
+:Consultar correo\nen la base de\ndatos;
+
+if (¿Correo\nregistrado?) then (No)
+    |USUARIO|
+    :Mostrar "Correo\nno registrado";
+    stop
+else (Sí)
+    |SISTEMA|
+    :Generar token\ntemporal;
+    :Guardar token\ntemporal;
+    :Enviar token\nal correo;
+    
+    |SERVICIO DE CORREO|
+    :Enviar correo\ncon el token;
+    
+    |USUARIO|
+    :Ingresa token\nrecibido;
+    
+    |SISTEMA|
+    :Validar token;
+    
+    |BASE DE DATOS|
+    :Verificar token y\nfecha de expiración;
+    
+    |SISTEMA|
+    if (¿Token válido\ny vigente?) then (No)
+        |USUARIO|
+        :Mostrar "Token\ninválido o\nexpirado";
+        stop
+    else (Sí)
+        |SISTEMA|
+        :Ingresa nueva\ncontraseña;
+        :Validar\ncontraseña;
+        
+        |BASE DE DATOS|
+        :Encriptar\ncontraseña;
+        :Actualizar\ncontraseña en\nla base de datos;
+        
+        |SISTEMA|
+        :Invalidar token\nusado;
+        
+        |USUARIO|
+        :Mostrar\n"Contraseña\nactualizada";
+        stop
+    endif
+endif
+@enduml
