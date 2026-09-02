@@ -1,0 +1,45 @@
+@startuml
+skinparam wrapWidth 200
+skinparam ActivityStartColor #A9D18E
+skinparam ActivityEndColor #FF9999
+skinparam ActivityDiamondBackgroundColor #FFE699
+skinparam SwimlaneBorderColor black
+
+title GESTIÓN DE SOPORTE Y FAQ\nONESTYLE MARIANA
+
+|Cliente|
+start
+:Ingresar al\nmódulo de Ayuda\ny Soporte;
+:Buscar en\nla sección de\nPreguntas\nFrecuentes\n(FAQ);
+
+if (¿Encuentra\nla respuesta?) then (Sí)
+  :Consultar\nla información;
+  :Finalizar\nconsulta;
+  stop
+else (No)
+  |Sistema|
+  :Mostrar formulario\nde solicitud de\nsoporte;
+  :Registrar y\nenviar solicitud;
+  :Almacenar\nsolicitud en\nel sistema;
+  
+  |Equipo de Soporte|
+  repeat
+    :Revisar y\nasignar solicitud;
+    :Analizar la\nsolicitud y\ngenerar respuesta;
+    :Enviar respuesta\nal cliente;
+    
+    |Sistema|
+    :Notificar al cliente\nsobre la respuesta;
+    
+    |Cliente|
+    :Recibir y revisar\nla respuesta;
+    
+  |Equipo de Soporte|
+  backward :Reabrir solicitud\no continuar\nasistencia;
+  
+  |Cliente|
+  repeat while (¿La respuesta\nfue útil?) is (No) not (Sí)
+  stop
+endif
+
+@enduml
