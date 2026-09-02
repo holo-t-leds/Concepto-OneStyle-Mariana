@@ -77,6 +77,7 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 ![BPMN](<docs/Bpmn/diagrama%20bpmn%201.png>)
 ![BPMN](<docs/Bpmn/diagrama%20bpmn%202.png>)
 ![BPMN](<docs/Bpmn/diagrama%20bpmn%203.png>)
+![BPMN](<docs/Bpmn/Bpmn%20FAQ.png>)
 
 
 **Diagrama de actividades:**
