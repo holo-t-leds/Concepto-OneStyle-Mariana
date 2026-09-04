@@ -68,14 +68,13 @@ rectangle "Sistema E-commerce & Panel OMS" {
     ' MÓDULO 2: CATÁLOGO E INVENTARIO
     ' ------------------------------------------
     package "Módulo 2: Catálogo e Inventario" {
+        usecase "CU: Explorar Catálogo Dinámico" as CU_Explorar_Cat
+        usecase "CU: Visualizar Detalle de Prenda y Variantes" as CU_Ver_Detalle
         usecase "CU-003: Registrar Prenda con Variantes" as CU03
         usecase "CU-004: Controlar Visibilidad de Producto" as CU04
         usecase "Configurar Matriz Talla / Color" as CU03_Matriz
-        usecase "Registrar Auditoría de Producto" as CU_Auditoria
 
         CU03 ..> CU03_Matriz : <<include>>
-        CU03 ..> CU_Auditoria : <<include>>
-        CU04 ..> CU_Auditoria : <<include>>
     }
 
     ' ------------------------------------------
@@ -100,6 +99,15 @@ rectangle "Sistema E-commerce & Panel OMS" {
     package "Módulo 4: Soporte y FAQ" {
         usecase "CU-008: Consultar y Filtrar FAQ" as CU08
         usecase "CU-009: Gestionar Preguntas Frecuentes" as CU09
+        usecase "CU-010: Contactar con Soporte" as CU10
+    }
+
+    ' ------------------------------------------
+    ' MÓDULO 5: AUDITORÍA Y REPORTES
+    ' ------------------------------------------
+    package "Módulo 5: Auditoría y Reportes" {
+        usecase "Registrar Transacción Crítica (Log)" as CU_Auditoria
+        usecase "CU-013: Generar Reportes e Indicadores" as CU13
     }
 }
 
@@ -107,11 +115,20 @@ rectangle "Sistema E-commerce & Panel OMS" {
 ' ASOCIACIONES: ACTORES -> CASOS DE USO
 ' ==========================================
 
+' Auditoría
+CU03 ..> CU_Auditoria : <<include>>
+CU04 ..> CU_Auditoria : <<include>>
+CU06 ..> CU_Auditoria : <<include>>
+
 ' Seguridad y Usuarios
 user_anon --> CU01
 admin --> CU02
 
 ' Catálogo e Inventario
+user_anon --> CU_Explorar_Cat
+user_anon --> CU_Ver_Detalle
+clienta --> CU_Explorar_Cat
+clienta --> CU_Ver_Detalle
 vendedora --> CU03
 vendedora --> CU04
 
@@ -123,6 +140,12 @@ CU06_WA --> whatsapp : <<Notifica / Envía Payload>>
 
 ' Soporte y FAQ
 user_anon --> CU08
+clienta --> CU08
+clienta --> CU10
 vendedora --> CU09
+admin --> CU09
+
+' Reportes
+admin --> CU13
 
 @enduml
