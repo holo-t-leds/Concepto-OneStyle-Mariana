@@ -45,6 +45,13 @@ El esquema relacional garantiza la integridad referencial y el soporte a transac
 * <u>**Datos Semilla (`database/seeds.sql`):**</u> Carga la configuración inicial de roles de usuario y categorías base del catálogo.
 
 ---
+### 3.3. Diccionario de Datos Oficial (20 Entidades)
+La especificación detallada de los 112 atributos, tipos de datos, restricciones de nulidad y reglas de negocio se encuentra documentada en su artefacto dedicado:
+
+* 📄 **Documentación Técnica Completa:** [Consultar Diccionario de Datos (Markdown)](docs/diccionariodatos.md)
+* 📊 **Versión Tabular:** [Descargar / Ver en Hoja de Cálculo (CSV)](https://docs.google.com/spreadsheets/d/1mqC6APqGv4mV4Q4Fhi1ud-hDtJPYeUUlx1HZXviDsxI/edit?usp=sharing)
+
+---
 
 ## 4. Prototipo Interactivo y Mockups de Interfaz
 
