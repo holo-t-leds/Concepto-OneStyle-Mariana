@@ -73,23 +73,29 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`). | ![Sin Resultados](<docs/mockups/busquedasinresultados.png>) |
 | **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`). | ![Página de Error (404)](<docs/mockups/404.png>) |
 
-### 4.3. Casos de Uso, BPMN y Diagrama de actividades
-**Casos de uso**
-* <u>**Documento:**</u> [Ver Casos de Uso en Google sheets](https://docs.google.com/document/d/1SimBp-0BJighWeZRdFHGI5peXwmv6t6e1VyrG6NXkP0/edit?usp=sharing)
-**Diagrama de Casos de Uso:**
+### 4.3. Diagramas de Interacción y Modelado de Procesos
+
+#### 1. Diagrama de Casos de Uso (Interacción y Actores del Sistema)
+Representa la frontera funcional del sistema, los roles de interacción y la cobertura de los 33 Requisitos Funcionales:
+
 ![Casos de Uso](<docs/Casos de uso/casosdesu.png>)
 
-**Diagrama BPMN:**
-![BPMN](<docs/Bpmn/bpmn.drawio.png>)
-![BPMN](<docs/Bpmn/diagrama%20bpmn%201.png>)
-![BPMN](<docs/Bpmn/diagrama%20bpmn%202.png>)
-![BPMN](<docs/Bpmn/diagrama%20bpmn%203.png>)
-![BPMN](<docs/Bpmn/Bpmn%20FAQ.png>)
+* 📄 **Especificación Formal:** [Consultar Documento de Casos de Uso en Google Docs](https://docs.google.com/document/d/1SimBp-0BJighWeZRdFHGI5peXwmv6t6e1VyrG6NXkP0/edit?usp=sharing)
 
+---
 
-**Diagrama de actividades:**
+#### 2. Diagrama de Actividades y Procesos de Negocio (BPMN)
+Modelado procedimental de los flujos operativos, decisiones lógicas y transiciones de estado del sistema:
 
-![diag](<docs/diagramaactividades/act%20diag.png>)
+| Diagrama de Actividades | Diagrama BPMN Principal |
+| :---: | :---: |
+| <img src="docs/diagramaactividades/act%20diag.png" width="380"/> | <img src="docs/Bpmn/bpmn.drawio.png" width="380"/> |
+| **Flujo de Acciones y Decisiones Lógicas** | **Proceso Macro de Negocio** |
+
+| Subproceso BPMN 1 & 2 | Subproceso BPMN 3 & FAQ |
+| :---: | :---: |
+| <img src="docs/Bpmn/diagrama%20bpmn%201.png" width="380"/> | <img src="docs/Bpmn/diagrama%20bpmn%203.png" width="380"/> |
+| <img src="docs/Bpmn/diagrama%20bpmn%202.png" width="380"/> | <img src="docs/Bpmn/Bpmn%20FAQ.png" width="380"/> |
 
 ---
 ## 5. Matriz de Requisitos y Trazabilidad
