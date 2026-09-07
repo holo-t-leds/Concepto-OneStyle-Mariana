@@ -82,14 +82,19 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Vista_Auditoria** | Trazabilidad e historial inmutable de las operaciones realizadas en el sistema (`RF-001, RF-001b, RF-001c, RF-001d`). | ![Vista Auditoría](<docs/mockups/Vista_Auditoria – Registro de operaciones.png>) |
 | **Vista_Admin_FAQ** | Administración y organización del contenido del centro de ayuda (`RF-FAQ-005, RF-FAQ-006, RF-FAQ-007`). | ![Vista Admin FAQ](<docs/mockups/Vista_Admin_FAQ – Administración del centro de ayuda.png>) |
 
-### 4.3. Diagramas de Interacción y Modelado de Procesos
+### 4.3. CU y Diagramas
+### 1.Diagramas de Casos de Uso por Módulos
+El modelado funcional del sistema **G.C.L. OneStyle Mariana** se desacopla en **5 módulos independientes**, manteniendo trazabilidad directa con la base de datos física y la matriz de requisitos:
 
-#### 1. Diagrama de Casos de Uso (Interacción y Actores del Sistema)
-Representa la frontera funcional del sistema, los roles de interacción y la cobertura de los 33 Requisitos Funcionales:
+| Módulo | Diagrama UML (PlantUML) | Cobertura Técnica |
+| :--- | :---: | :--- |
+| **Módulo 1: Seguridad y Usuarios** | <img src="docs/Casos%20de%20uso/cu_seguridad.png" width="340"/> | **Actores:** Visitante, Clienta, Admin.<br>**Requisitos:** `RF-001d`, `RF-002`, `RF-003a-g`.<br>**Tablas BD:** `usuarios`, `roles`, `auditoria`. |
+| **Módulo 2: Catálogo e Inventario** | <img src="docs/Casos%20de%20uso/cu_catalogo.png" width="340"/> | **Actores:** Visitante, Administradora.<br>**Requisitos:** `RF-004` al `RF-009`, `RF-PROD-004/005`.<br>**Tablas BD:** `producto`, `producto_atributo`, `inventario`. |
+| **Módulo 3: Carrito de Compras** | <img src="docs/Casos%20de%20uso/cu_carrito.png" width="340"/> | **Actores:** Clienta.<br>**Requisitos:** `RF-010`, `RF-CART-010`.<br>**Tablas BD:** `carrito`, `detalle_carrito`, `inventario`. |
+| **Módulo 4: Pedidos y Gestión (OMS)** | <img src="docs/Casos%20de%20uso/cu_pedido.png" width="340"/> | **Actores:** Clienta, Vendedora, WhatsApp API.<br>**Requisitos:** `RF-011`, `RF-012`, `RF-ORD-001/002`.<br>**Tablas BD:** `pedido`, `detalle_pedido`, `domicilio`. |
+| **Módulo 5: Soporte y FAQ** | <img src="docs/Casos%20de%20uso/cu_faq.png" width="340"/> | **Actores:** Visitante, Clienta, Vendedora, Admin.<br>**Requisitos:** `RF-FAQ-001` al `007`, `RF-SOP-001`.<br>**Tablas BD:** `faq`, `categorias_faq`, `configuracion_soporte`. |
 
-![Casos de Uso](<docs/Casos de uso/casosdesu.png>)
-
-* 📄 **Especificación Formal:** [Consultar Documento de Casos de Uso en Google Docs](https://docs.google.com/document/d/1SimBp-0BJighWeZRdFHGI5peXwmv6t6e1VyrG6NXkP0/edit?usp=sharing)
+> 📄 **Especificación Detallada de Casos de Uso:** Para consultar la descripción narrativa de flujos principales, alternos y reglas de negocio paso a paso, revise el [Documento Formal de Casos de Uso en Google Docs](https://docs.google.com/document/d/1SimBp-0BJighWeZRdFHGI5peXwmv6t6e1VyrG6NXkP0/edit?usp=sharing).
 
 ---
 
