@@ -76,6 +76,11 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Vista_Admin_OMS** | Gestión y trazabilidad del ciclo de vida de los pedidos (`RF-012`). | ![Vista Admin OMS](<docs/mockups/Vista_Admin_OMS – Gestión de pedidos.png>) |
 | **Vista_Admin_Inventario** | Administración CRUD de productos y control del stock disponible (`RF-004, RF-004b, RF-004c, RF-004d, RF-006, RF-PROD-005`). | ![Vista Admin Inventario](<docs/mockups/Vista_Admin_Inventario – Gestión de productos e inventario.png>) |
 | **Vista_Admin_Categorias** | Gestión estructurada de las categorías de productos (`RF-007`). | ![Vista Admin Categorías](<docs/mockups/Categorías de administración del panel.png>) |
+| **Vista_Admin_Atributos** | Administración de datos maestros para tallas y colores de los productos (`RF-PROD-004`). | ![Vista Admin Atributos](<docs/mockups/Panel de administración Tallas.png>) |
+| **Vista_Admin_Usuarios** | Gestión de usuarios internos, roles y estados de acceso (`RF-003e`). | ![Vista Admin Usuarios](<docs/mockups/Panel de administración usuarios.png>) |
+| **Vista_Dashboard** | Consolidación y visualización de indicadores para el análisis administrativo (`RF-013`). | ![Dashboard](<docs/mockups/Vista_Dashboard – Panel de indicadores.png>) |
+| **Vista_Auditoria** | Trazabilidad e historial inmutable de las operaciones realizadas en el sistema (`RF-001, RF-001b, RF-001c, RF-001d`). | ![Vista Auditoría](<docs/mockups/Vista_Auditoria – Registro de operaciones.png>) |
+| **Vista_Admin_FAQ** | Administración y organización del contenido del centro de ayuda (`RF-FAQ-005, RF-FAQ-006, RF-FAQ-007`). | ![Vista Admin FAQ](<docs/mockups/Vista_Admin_FAQ – Administración del centro de ayuda.png>) |
 
 ### 4.3. Diagramas de Interacción y Modelado de Procesos
 
