@@ -1,5 +1,5 @@
 
-# 3.3 Diccionario de Datos — G.C.C. OneStyle Mariana (OMS)
+# 3.3 Diccionario de Datos — G.C.L. OneStyle Mariana (OMS)
 
 **Sistema de Gestión de Pedidos e Inventario**  
 **Programa de Formación:** Análisis y Desarrollo de Software (ADSO)  
