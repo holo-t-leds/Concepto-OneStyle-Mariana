@@ -1,0 +1,32 @@
+@startuml CU_05_Soporte_FAQ
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Usuario Visitante" as user_anon
+actor "Clienta" as clienta
+actor "Vendedora" as vendedora
+actor "Administradora" as admin
+
+clienta -up-|> user_anon
+admin -up-|> vendedora
+
+rectangle "Módulo 5: Soporte y FAQ" {
+    usecase "CU-021: Consultar FAQ por Categorías" as CU21
+    usecase "CU-022: Buscar Preguntas Frecuentes" as CU22
+    usecase "CU-023: Contactar Canales de Asistencia" as CU23
+    usecase "CU-024: Gestionar Preguntas Frecuentes" as CU24
+    usecase "CU-025: Configurar Canales de Soporte" as CU25
+    usecase "Registrar Traza Crítica" as CU_Audit
+
+    CU24 ..> CU_Audit : <<include>>
+    CU25 ..> CU_Audit : <<include>>
+}
+
+user_anon --> CU21
+user_anon --> CU22
+clienta --> CU23
+
+vendedora --> CU24
+admin --> CU25
+@enduml

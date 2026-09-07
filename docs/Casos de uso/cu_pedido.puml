@@ -1,0 +1,38 @@
+@startuml CU_04_Pedidos_Gestion_OMS
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Clienta" as clienta
+actor "Vendedora" as vendedora
+actor "Administradora" as admin
+actor "Servicio WhatsApp" as whatsapp <<Secondary System>>
+
+admin -up-|> vendedora
+
+rectangle "Módulo 4: Pedidos y Gestión (OMS)" {
+    usecase "CU-016: Registrar Pedido y Despacho" as CU16
+    usecase "CU-017: Consultar Historial y Rastreo" as CU17
+    usecase "CU-018: Controlar Ciclo de Vida del Pedido" as CU18
+    usecase "CU-019: Cargar Comprobante de Pago" as CU19
+    usecase "CU-020: Generar Reportes e Indicadores" as CU20
+    
+    usecase "Redirigir Resumen a WhatsApp" as CU_WA
+    usecase "Reintegrar Stock por Cancelación" as CU_Reint
+    usecase "Registrar Traza Crítica" as CU_Audit
+
+    CU16 ..> CU_WA : <<include>>
+    CU16 ..> CU_Audit : <<include>>
+    CU18 <.. CU_Reint : <<extend>> \n (Si pedido es cancelado)
+    CU18 ..> CU_Audit : <<include>>
+}
+
+clienta --> CU16
+clienta --> CU17
+clienta --> CU19
+
+vendedora --> CU18
+admin --> CU20
+
+CU_WA --> whatsapp : <<Notifica / Envía Payload>>
+@enduml

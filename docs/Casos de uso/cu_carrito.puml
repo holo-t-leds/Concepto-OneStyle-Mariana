@@ -1,0 +1,26 @@
+@startuml CU_03_Carrito_Compras
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Clienta" as clienta
+
+rectangle "Módulo 3: Carrito de Compras" {
+    usecase "CU-012: Agregar Prenda al Carrito" as CU12
+    usecase "CU-013: Modificar Cantidades de Ítems" as CU13
+    usecase "CU-014: Eliminar Ítem del Carrito" as CU14
+    usecase "CU-015: Vaciar Carrito de Compras" as CU15
+    usecase "Validar Stock y Crear Reserva" as CU_Reserva
+    usecase "Recalcular Subtotales" as CU_Subtotal
+
+    CU12 ..> CU_Reserva : <<include>>
+    CU12 ..> CU_Subtotal : <<include>>
+    CU13 ..> CU_Subtotal : <<include>>
+    CU14 ..> CU_Subtotal : <<include>>
+}
+
+clienta --> CU12
+clienta --> CU13
+clienta --> CU14
+clienta --> CU15
+@enduml

@@ -1,0 +1,34 @@
+@startuml CU_02_Catalogo_Inventario
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Usuario Visitante" as user_anon
+actor "Administradora" as admin
+
+rectangle "Módulo 2: Catálogo e Inventario" {
+    usecase "CU-006: Explorar Catálogo Dinámico" as CU06
+    usecase "CU-007: Visualizar Detalle y Variantes" as CU07
+    usecase "CU-008: Gestionar Prendas (CRUD)" as CU08
+    usecase "CU-009: Gestionar Categorías Maestras" as CU09
+    usecase "CU-010: Gestionar Tallas y Colores" as CU10
+    usecase "CU-011: Controlar Visibilidad de Producto" as CU11
+    usecase "Configurar Matriz Talla / Color" as CU_Matriz
+    usecase "Alertar Punto de Reposición" as CU_Alerta
+    usecase "Registrar Traza Crítica" as CU_Audit
+
+    CU08 ..> CU_Matriz : <<include>>
+    CU08 ..> CU_Audit : <<include>>
+    CU09 ..> CU_Audit : <<include>>
+    CU11 ..> CU_Audit : <<include>>
+    CU08 <.. CU_Alerta : <<extend>> \n (Si stock <= umbral)
+}
+
+user_anon --> CU06
+user_anon --> CU07
+
+admin --> CU08
+admin --> CU09
+admin --> CU10
+admin --> CU11
+@enduml
