@@ -1,4 +1,4 @@
-# G.C.L. OneStyle Mariana — Sistema de Gestión de Pedidos e Inventario (OMS)
+# G.C.L. OneStyleMariana — Sistema de Gestión de Pedidos e Inventario (OMS)
 
 <u>**Programa de Formación:**</u> Análisis y Desarrollo de Software (ADSO) — Código 3484008  
 <u>**Fase del Proyecto:**</u> Hacer y Verificar  
