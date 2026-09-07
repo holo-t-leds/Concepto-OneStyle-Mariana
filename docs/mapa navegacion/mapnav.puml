@@ -5,12 +5,12 @@ skinparam classAttributeIconSize 0
 
 * G.C.L. OneStyle Mariana\n(E-commerce & OMS)
 
-** Acceso y Seguridad
-*** Registro Público (Rol Clienta por Defecto)
+** Acceso y Autenticación
+*** Registro Público (Clientas)
 *** Inicio de Sesión RBAC (Clienta, Vendedora, Administradora)
-*** Recuperación Segura de Credenciales (Token Temporal)
+*** Recuperación de Contraseña (Token Temporal)
 
-** Tienda Pública y Clientas
+** Tienda Pública y Clientas (Front-office)
 *** Catálogo Dinámico de Productos
 **** Exploración Paginada y Filtros por Categoría
 **** Buscador Predictivo por Nombre
@@ -21,32 +21,32 @@ skinparam classAttributeIconSize 0
 **** Validación y Reserva Temporal de Stock
 **** Modificación de Cantidades y Recálculo Dinámico
 *** Checkout y Despacho
-**** Captura de Dirección de Envío (domicilio)
-**** Confirmación Asistida y Redirección con Payload a WhatsApp
-*** Área Privada de Clienta (Autenticado)
-**** Perfil y Direcciones Predeterminadas
-**** Historial de Pedidos y Trazabilidad de Estados
-*** Centro de Ayuda al Cliente
+**** Formulario de Entrega (Captura de Domicilio)
+**** Confirmación Asistida y Redirección a WhatsApp
+*** Área Privada de Clienta
+**** Mi Perfil y Direcciones
+**** Historial de Pedidos y Rastreo de Estados
+*** Centro de Ayuda
 **** Consulta Pública de FAQ por Categorías
 **** Canales Oficiales de Soporte y Contacto
 
 ** Panel Administrativo y Operativo (Back-office)
 *** Dashboard Ejecutivo
-**** Indicadores de Ventas y Rendimiento por Vendedora
+**** Métricas de Ventas y Rendimiento por Vendedora
 **** Monitoreo de Alertas de Reposición (Stock Crítico)
 *** Gestión de Catálogo e Inventario
 **** Mantenimiento CRUD de Prendas y Categorías
-**** Parametrización de Variantes (Matriz Tallas, Colores y Stock)
+**** Parametrización de Variantes (Tallas, Colores y Stock)
 **** Control de Visibilidad (Baja Lógica / Soft Delete)
 *** Gestión de Pedidos y Logística (OMS)
-**** Bandeja General de Órdenes y Asignación de Vendedora
-**** Verificación de Comprobante de Pago (WhatsApp)
+**** Bandeja de Órdenes y Asignación de Vendedora
+**** Verificación de Comprobantes de Pago
 **** Control de Estados (Registrado, En Empaque, Despachado, Cancelado)
-*** Administración de Usuarios y Personal
+*** Administración de Personal
 **** CRUD de Personal Operativo (Vendedoras)
 **** Asignación de Roles y Bajas Lógicas de Cuentas
 *** Configuración, Soporte y Auditoría
-**** Mantenimiento del Centro de Ayuda (FAQ y Contacto)
-**** Visor Inmutable de Logs de Auditoría (Cambios Críticos)
+**** Mantenimiento de Preguntas Frecuentes (FAQ)
+**** Visor Inmutable de Logs de Auditoría
 
 @endmindmap
