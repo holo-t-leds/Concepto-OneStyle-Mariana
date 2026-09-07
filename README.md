@@ -66,7 +66,7 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | Vista / Interfaz | Propósito Técnico | Captura de Diseño |
 | :--- | :--- | :---: |
 | **Inicio de Sesión** | Acceso seguro multi-rol (`RF-003b`). | ![Inicio de Sesión](<docs/mockups/login1.png>) |
-| **Catálogo Dinámico** | Visualización por categorías (`RF-008`). | ![Catálogo Dinámico](<docs/mockups/catalogo1.png>) |
+| **Catálogo Dinámico** | Visualización por categorías (`RF-008`). | ![Catálogo Dinámico](<docs/mockups/catalogo%20(2).png>) |
 | **Detalle de Prenda** | Selector de talla, color y stock (`RF-009`). | ![Detalle de Prenda](<docs/mockups/Detalle%20prenda%20(1).png>) |
 | **Bolsa de Compras** | Control y vaciado de carrito (`RF-010`). | ![Bolsa de Compras](<docs/mockups/carrito1.png>) |
 | **Búsqueda con Éxito** | Filtro dinámico de prendas (`RF-008`). | ![Búsqueda con Éxito](<docs/mockups/busqueda%20exitosa1.png>) |
