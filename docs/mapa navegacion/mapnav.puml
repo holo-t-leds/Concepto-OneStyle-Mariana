@@ -3,43 +3,50 @@
 skinparam linetype ortho
 skinparam classAttributeIconSize 0
 
-* G.C.C. OneStyleMariana \n(Sistema de Gestión de Pedidos)
+* G.C.L. OneStyle Mariana\n(E-commerce & OMS)
 
-** Acceso Seguro
-*** Registro Público (Clientas)
-*** Inicio de Sesión (Roles: Administradora, Vendedora, Clienta)
-*** Recuperación de Credenciales (Token de 60 min)
+** Módulo 1: Acceso y Seguridad
+*** Registro Público (Rol Clienta por Defecto)
+*** Inicio de Sesión RBAC (Clienta, Vendedora, Administradora)
+*** Recuperación Segura de Credenciales (Token Temporal)
 
-** Pagina clientas
-*** Catálogo Dinámico
-**** Filtro de Prendas por Categorías
-**** Detalle del Producto
-***** Selector de Atributos (Talla y Color)
+** Tienda Pública y Clientas
+*** Catálogo Dinámico de Productos
+**** Exploración Paginada y Filtros por Categoría
+**** Buscador Predictivo por Nombre
+**** Detalle de Prenda (Vista_Detalle_Producto)
+***** Galería de Imágenes
+***** Selector de Variantes (Talla y Color)
 *** Carrito de Compras
-**** Validación de Stock en Tiempo Real
-**** Adición/Modificación de Cantidades
-*** Formulario de Checkout (Datos de Envío)
-**** Captura de Dirección, Ciudad y Teléfono
-**** Confirmación Asíncrona del Pedido
-**** Redirección con Plantilla de Texto a WhatsApp
-*** Perfil de Usuario (Autenticado)
-**** Mis Datos Predeterminados
-**** Historial de Compras y Estados Logísticos
+**** Validación y Reserva Temporal de Stock
+**** Modificación de Cantidades y Recálculo Dinámico
+*** Checkout y Despacho
+**** Captura de Dirección de Envío (domicilio)
+**** Confirmación Asistida y Redirección con Payload a WhatsApp
+*** Área Privada de Clienta (Autenticado)
+**** Perfil y Direcciones Predeterminadas
+**** Historial de Pedidos y Trazabilidad de Estados
+*** Centro de Ayuda al Cliente
+**** Consulta Pública de FAQ por Categorías
+**** Canales Oficiales de Soporte y Contacto
 
-** PANEL DE CONTROL ADMINISTRATIVO 
-*** Dashboard Operativo
-**** Indicadores Financieros y Métricas de Ventas
-**** Resumen de Actividad por Vendedora
-*** Gestión del Catálogo (CRUD Inventario)
-**** Creación y Edición de Productos
-**** Definición de Variantes (Tallas/Stock Mínimo)
-**** Control Lógico de Visibilidad (Activo / Inactivo)
-*** Módulo de Pedidos y Logística
-**** Control de Ciclo de Vida del Pedido
-**** Modificación Manual de Estados (Pendiente, Confirmado, Despachado, etc.)
-*** Seguridad y Auditoría
-**** Visualización de Logs Cronológicos (Cambios Críticos de Stock y Precios)
-*** Canal Informativo
-**** Gestión de Preguntas Frecuentes (FAQ)
+** Panel Administrativo y Operativo (Back-office)
+*** Dashboard Ejecutivo
+**** Indicadores de Ventas y Rendimiento por Vendedora
+**** Monitoreo de Alertas de Reposición (Stock Crítico)
+*** Gestión de Catálogo e Inventario
+**** Mantenimiento CRUD de Prendas y Categorías
+**** Parametrización de Variantes (Matriz Tallas, Colores y Stock)
+**** Control de Visibilidad (Baja Lógica / Soft Delete)
+*** Gestión de Pedidos y Logística (OMS)
+**** Bandeja General de Órdenes y Asignación de Vendedora
+**** Verificación de Comprobante de Pago (WhatsApp)
+**** Control de Estados (Registrado, En Empaque, Despachado, Cancelado)
+*** Administración de Usuarios y Personal
+**** CRUD de Personal Operativo (Vendedoras)
+**** Asignación de Roles y Bajas Lógicas de Cuentas
+*** Configuración, Soporte y Auditoría
+**** Mantenimiento del Centro de Ayuda (FAQ y Contacto)
+**** Visor Inmutable de Logs de Auditoría (Cambios Críticos)
 
 @endmindmap
