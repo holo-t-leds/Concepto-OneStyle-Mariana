@@ -71,7 +71,7 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Bolsa de Compras** | Control y vaciado de carrito (`RF-010`). | ![Bolsa de Compras](<docs/mockups/carrito1.png>) |
 | **Búsqueda con Éxito** | Filtro dinámico de prendas (`RF-008`). | ![Búsqueda con Éxito](<docs/mockups/busqueda%20exitosa1.png>) |
 | **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`). | ![Sin Resultados](<docs/mockups/busqueda%20sin%20resultados1.png>) |
-| **Categorias de la ropa** | Visualización de filtrado por tipo de prenda (`RF-007a`). |![Categorias por prenda](<docs/mockups/categorias.png>). |
+| **Categorias de la ropa** | Visualización de filtrado por tipo de prenda (`RF-007a`). |![Categorias por prenda](<docs/mockups/categorias.png>) |
 | **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`). | ![Página de Error (404)](<docs/mockups/404(1).png>) |
 | **Vista_Admin_OMS** | Gestión y trazabilidad del ciclo de vida de los pedidos (`RF-012`). | ![Vista Admin OMS](<docs/mockups/Vista_Admin_OMS – Gestión de pedidos.png>) |
 | **Vista_Admin_Inventario** | Administración CRUD de productos y control del stock disponible (`RF-004, RF-004b, RF-004c, RF-004d, RF-006, RF-PROD-005`). | ![Vista Admin Inventario](<docs/mockups/Vista_Admin_Inventario – Gestión de productos e inventario.png>) |
