@@ -48,7 +48,7 @@ El esquema relacional garantiza la integridad referencial y el soporte a transac
 ### 3.3. Diccionario de Datos Oficial (20 Entidades)
 La especificación detallada de los 112 atributos, tipos de datos, restricciones de nulidad y reglas de negocio se encuentra documentada en su artefacto dedicado:
 
-* 📄 **Documentación Técnica Completa:** [Consultar Diccionario de Datos (Markdown)](docs/diccionariodatos.md)
+* 📄 **Documentación Técnica Completa:** [Consultar Diccionario de Datos (Markdown)](<docs/diccionariodatos.md>)
 * 📊 **Versión Tabular:** [Descargar / Ver en Hoja de Cálculo (CSV)](https://docs.google.com/spreadsheets/d/1mqC6APqGv4mV4Q4Fhi1ud-hDtJPYeUUlx1HZXviDsxI/edit?usp=sharing)
 
 ---
@@ -66,18 +66,18 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | Vista / Interfaz | Propósito Técnico | Captura de Diseño |
 | :--- | :--- | :---: |
 | **Inicio de Sesión** | Acceso seguro multi-rol (`RF-003b`). | ![Inicio de Sesión](<docs/mockups/login1.png>) |
-| **Catálogo Dinámico** | Visualización por categorías (`RF-008`). | ![Catálogo Dinámico](<docs/mockups/catalogo%20(2).png>) |
-| **Detalle de Prenda** | Selector de talla, color y stock (`RF-009`). | ![Detalle de Prenda](<docs/mockups/Detalle%20prenda%20(1).png>) |
+| **Catálogo Dinámico** | Visualización por categorías (`RF-008`). | ![Catálogo Dinámico](<docs/mockups/catalogo (2).png>) |
+| **Detalle de Prenda** | Selector de talla, color y stock (`RF-009`). | ![Detalle de Prenda](<docs/mockups/Detalle prenda (1).png>) |
 | **Bolsa de Compras** | Control y vaciado de carrito (`RF-010`). | ![Bolsa de Compras](<docs/mockups/carrito1.png>) |
-| **Búsqueda con Éxito** | Filtro dinámico de prendas (`RF-008`). | ![Búsqueda con Éxito](<docs/mockups/busqueda%20exitosa1.png>) |
-| **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`). | ![Sin Resultados](<docs/mockups/busqueda%20sin%20resultados1.png>) |
+| **Búsqueda con Éxito** | Filtro dinámico de prendas (`RF-008`). | ![Búsqueda con Éxito](<docs/mockups/busqueda exitosa1.png>) |
+| **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`). | ![Sin Resultados](<docs/mockups/busqueda sin resultados1.png>) |
 | **Categorias de la ropa** | Visualización de filtrado por tipo de prenda (`RF-007a`). |![Categorias por prenda](<docs/mockups/categorias.png>) |
 | **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`). | ![Página de Error (404)](<docs/mockups/404(1).png>) |
 | **Vista_Admin_OMS** | Gestión y trazabilidad del ciclo de vida de los pedidos (`RF-012`). | ![Vista Admin OMS](<docs/mockups/Vista_Admin_OMS – Gestión de pedidos.png>) |
 | **Vista_Admin_Inventario** | Administración CRUD de productos y control del stock disponible (`RF-004, RF-004b, RF-004c, RF-004d, RF-006, RF-PROD-005`). | ![Vista Admin Inventario](<docs/mockups/Vista_Admin_Inventario – Gestión de productos e inventario.png>) |
-| **Vista_Admin_Categorias** | Gestión estructurada de las categorías de productos (`RF-007`). | ![Vista Admin Categorías](docs/mockups/Panel%20admin%20categorías.png) |
-| **Vista_Admin_Atributos** | Administración de datos maestros para tallas y colores de los productos (`RF-PROD-004`). | ![Vista Admin Atributos](docs/mockups/Panel%20Admin%20Tallas.png) |
-| **Vista_Admin_Usuarios** | Gestión de usuarios internos, roles y estados de acceso (`RF-003e`). | ![Vista Admin Usuarios](docs/mockups/Panel%20admin%20usuarios.png) |
+| **Vista_Admin_Categorias** | Gestión estructurada de las categorías de productos (`RF-007`). | ![Vista Admin Categorías](<docs/mockups/Panel admin categorías.png>) |
+| **Vista_Admin_Atributos** | Administración de datos maestros para tallas y colores de los productos (`RF-PROD-004`). | ![Vista Admin Atributos](<docs/mockups/Panel Admin Tallas.png>) |
+| **Vista_Admin_Usuarios** | Gestión de usuarios internos, roles y estados de acceso (`RF-003e`). | ![Vista Admin Usuarios](<docs/mockups/Panel admin usuarios.png>) |
 | **Vista_Dashboard** | Consolidación y visualización de indicadores para el análisis administrativo (`RF-013`). | ![Dashboard](<docs/mockups/Vista_Dashboard – Panel de indicadores.png>) |
 | **Vista_Auditoria** | Trazabilidad e historial inmutable de las operaciones realizadas en el sistema (`RF-001, RF-001b, RF-001c, RF-001d`). | ![Vista Auditoría](<docs/mockups/Vista_Auditoria – Registro de operaciones.png>) |
 | **Vista_Admin_FAQ** | Administración y organización del contenido del centro de ayuda (`RF-FAQ-005, RF-FAQ-006, RF-FAQ-007`). | ![Vista Admin FAQ](<docs/mockups/Vista_Admin_FAQ – Administración del centro de ayuda.png>) |
