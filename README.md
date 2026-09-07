@@ -73,6 +73,7 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`). | ![Sin Resultados](<docs/mockups/busqueda%20sin%20resultados1.png>) |
 | **Categorias de la ropa** | Visualización de filtrado por tipo de prenda (`RF-007a`). |![Categorias por prenda](<docs/mockups/categorias.png>). |
 | **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`). | ![Página de Error (404)](<docs/mockups/404(1).png>) |
+| **Vista_Admin_OMS** | Gestión y trazabilidad del ciclo de vida de los pedidos (`RF-012`). | ![Vista Admin OMS](<docs/mockups/Vista_Admin_OMS – Gestión de pedidos.png>) |
 
 ### 4.3. Diagramas de Interacción y Modelado de Procesos
 
