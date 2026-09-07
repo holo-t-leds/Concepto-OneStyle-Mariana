@@ -214,7 +214,5 @@ El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (R
 │   │   ├── test_carrito.py                                  # Casos de prueba: cálculo de totales, límites de stock y vaciado
 │   │   └── test_pedidos.py                                  # Casos de prueba: formalización de órdenes, estados y payload a WhatsApp
 │   └── __init__.py                                          # Inicializador de la suite general de pruebas
-├── Ficha de Proyecto                                        # Documento administrativo con identificación del proyecto y miembros de equipo
-├── Matriz de requisitos                                     # Acceso directo al repositorio de trazabilidad de requisitos y pruebas
 ├── README.md                                                # Ficha técnica, arquitectura y manual oficial del repositorio
 └── requirements.txt                                         # Dependencias y librerías del proyecto para el entorno virtual (pytest)
