@@ -75,6 +75,7 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Página de Error (404)** | Manejo de rutas inexistentes (`RNF-003`). | ![Página de Error (404)](<docs/mockups/404(1).png>) |
 | **Vista_Admin_OMS** | Gestión y trazabilidad del ciclo de vida de los pedidos (`RF-012`). | ![Vista Admin OMS](<docs/mockups/Vista_Admin_OMS – Gestión de pedidos.png>) |
 | **Vista_Admin_Inventario** | Administración CRUD de productos y control del stock disponible (`RF-004, RF-004b, RF-004c, RF-004d, RF-006, RF-PROD-005`). | ![Vista Admin Inventario](<docs/mockups/Vista_Admin_Inventario – Gestión de productos e inventario.png>) |
+| **Vista_Admin_Categorias** | Gestión estructurada de las categorías de productos (`RF-007`). | ![Vista Admin Categorías](<docs/mockups/Categorías de administración del panel.png>) |
 
 ### 4.3. Diagramas de Interacción y Modelado de Procesos
 
