@@ -5,7 +5,7 @@ skinparam classAttributeIconSize 0
 
 * G.C.L. OneStyle Mariana\n(E-commerce & OMS)
 
-** Módulo 1: Acceso y Seguridad
+** Acceso y Seguridad
 *** Registro Público (Rol Clienta por Defecto)
 *** Inicio de Sesión RBAC (Clienta, Vendedora, Administradora)
 *** Recuperación Segura de Credenciales (Token Temporal)
