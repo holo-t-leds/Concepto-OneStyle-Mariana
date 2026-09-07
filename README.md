@@ -129,58 +129,92 @@ El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (R
 ```text
 ├── .github/
 │   └── workflows/
-│       └── tests.yml            # Pipeline de Integración Continua (CI) en GitHub Actions
-├── database/
-│   ├── schema.sql               # Script DDL de creación de tablas en MySQL / MariaDB
-│   └── seeds.sql                # Inserción de datos maestros iniciales
-├── docs/
-│   ├── Bpmn/                      # Diagramas de Modelado de Procesos de Negocio
-│   │   ├── Bpmn FAQ.png           # Preguntas frecuentes y guía BPMN
-│   │   ├── bpmn                   # Archivo de configuración/exportación
-│   │   └── bpmn.drawio.png        # Diagrama BPMN principal exportado de Draw.io
-│   ├── Casos de uso/              # Modelos de Interacción del Sistema
-│   │   ├── casosdesu.png          # Renderizado del Diagrama de Casos de Uso
-│   │   └── casosdeuso.puml        # Código fuente PlantUML de Casos de Uso
-│   ├── diagramaactividades/       # Modelos de Interacción del Sistema
-│   │   ├── act diag.png           # Renderizado del Diagrama de actividades
-│   │   └── actdi.puml             # Código fuente PlantUML de actividades
-│   ├── ent relacion/
-│   │   ├── ent.puml             # Código fuente PlantUML del Modelo Entidad-Relación
-│   │   └── entidad.png          # Renderizado visual del MER
-│   ├── mapa navegacion/
-│   │   ├── mapnav.puml          # Código fuente PlantUML de navegación (Mindmap)
-│   │   └── mapanavegacion.png   # Renderizado visual del mapa de navegación
-│   └── mockups/                 # Diseños de alta fidelidad exportados de Figma
-│   │   ├── 404.png
-│   │   ├── Detalleprenda.png
-│   │   ├── Html.png
-│   │   ├── busquedaexitosa.png
-│   │   ├── busquedasinresultados.png
-│   │   ├── carrito.png
-│   │   ├── catalogo.png
-│   │   └── login.png
-│   └── board.jpg                 # Imagen Storyboard
-├── src/
-│   ├── __init__.py
-│   ├── auditoria/               # Lógica de trazas y logs transaccionales
-│   │   └── service.py
-│   ├── auth/                    # Lógica de usuarios, roles y autenticación
-│   │   └── service.py
-│   ├── carrito/                 # Lógica de control de carrito y validación de stock
-│   │   └── service.py
-│   ├── catalogo/                # Lógica de productos, variantes y existencias
-│   │   └── service.py
-│   ├── modulos/                 # Prototipos visuales y referencias gráficas
-│   │   └── prototipo_catalogo_inventario.html
-│   └── pedidos/                 # Lógica de pedidos, totalización y WhatsApp
-│       └── service.py
-├── tests/
-│   ├── __init__.py
-│   └── unit/                    # Suite de pruebas unitarias (Mindset TDD)
-│       ├── test_auth.py
-│       ├── test_carrito.py
-│       └── test_pedidos.py
-├── .gitignore
-├── Matriz de requisitos         # Enlace directo a la Matriz de Trazabilidad
-├── requirements.txt             # Dependencias del proyecto (pytest)
-└── README.md                    # Documentación técnica oficial
+│       └── tests.yml                                        # Pipeline de Integración Continua (CI) con GitHub Actions (Pytest)
+├── database/                                                # Capa de persistencia y modelos relacionales (MySQL / MariaDB)
+│   ├── schema.sql                                           # Script DDL oficial con la definición de las 20 tablas relacionales
+│   └── seeds.sql                                            # Inserción de datos semilla maestros (roles del sistema y categorías)
+├── docs/                                                    # Documentación de ingeniería de software, modelos y artefactos visuales
+│   ├── Bpmn/                                                # Modelado formal de procesos de negocio (BPMN 2.0)
+│   │   ├── Bpmn FAQ.png                                     # Renderizado visual del subproceso de atención y preguntas frecuentes
+│   │   ├── Bpmn_FAQ.puml                                    # Código fuente PlantUML del subproceso de soporte y FAQ
+│   │   ├── bpmn.drawio.png                                  # Diagrama macro de negocio consolidado exportado desde Draw.io
+│   │   ├── bpmn.drawio.xml                                  # Archivo editable de Draw.io con el modelado de procesos
+│   │   ├── codigo diagrama 2.puml                           # Código PlantUML del subproceso logístico y asignación de vendedora
+│   │   ├── codigo diagrama 3.puml                           # Código PlantUML del subproceso de validación de pago y WhatsApp
+│   │   ├── codigo diagrama1.puml                            # Código PlantUML del subproceso de exploración y compra de la clienta
+│   │   ├── diagrama bpmn 1.png                              # Renderizado visual del proceso de adquisición y reserva en carrito
+│   │   ├── diagrama bpmn 2.png                              # Renderizado visual del proceso operativo de empaque y despacho OMS
+│   │   └── diagrama bpmn 3.png                              # Renderizado visual de la confirmación asistida vía WhatsApp
+│   ├── Casos de uso/                                        # Modelado funcional UML de interacciones del sistema (5 módulos)
+│   │   ├── cu_carrito.png                                   # Diagrama de casos de uso renderizado: Módulo 3 (Carrito de Compras)
+│   │   ├── cu_carrito.puml                                  # Código PlantUML: Módulo 3 (Carrito, reservas de stock y subtotales)
+│   │   ├── cu_catalogo.png                                  # Diagrama de casos de uso renderizado: Módulo 2 (Catálogo e Inventario)
+│   │   ├── cu_catalogo.puml                                 # Código PlantUML: Módulo 2 (Gestión de variantes, prendas y filtros)
+│   │   ├── cu_faq.png                                       # Diagrama de casos de uso renderizado: Módulo 5 (Soporte y FAQ)
+│   │   ├── cu_faq.puml                                      # Código PlantUML: Módulo 5 (Preguntas frecuentes y configuración de soporte)
+│   │   ├── cu_pedido.png                                    # Diagrama de casos de uso renderizado: Módulo 4 (Pedidos y OMS)
+│   │   ├── cu_pedido.puml                                   # Código PlantUML: Módulo 4 (Ciclo de vida de órdenes y venta asistida)
+│   │   ├── cu_seguridad.png                                 # Diagrama de casos de uso renderizado: Módulo 1 (Seguridad y Usuarios)
+│   │   └── cu_seguridad.puml                                # Código PlantUML: Módulo 1 (Autenticación, RBAC y auditoría inmutable)
+│   ├── diagramaactividades/                                 # Modelado dinámico procedimental y lógica de control
+│   │   ├── act diag.png                                     # Renderizado visual del flujo de actividades y decisiones del checkout
+│   │   └── actdi.puml                                       # Código PlantUML del diagrama de actividades con swimlanes por rol
+│   ├── ent relacion/                                        # Modelado conceptual y lógico de base de datos
+│   │   ├── ent.puml                                         # Código fuente PlantUML del Modelo Entidad-Relación (20 entidades)
+│   │   └── entidad.png                                      # Renderizado gráfico de la topología relacional y llaves foráneas
+│   ├── mapa navegacion/                                     # Arquitectura de información y rutas de usuario (UX/UI)
+│   │   ├── mapanavegacion.png                               # Renderizado gráfico de la estructura jerárquica de vistas y accesos
+│   │   └── mapnav.puml                                      # Código fuente PlantUML Mindmap con el árbol de pantallas del sistema
+│   ├── mockups/                                             # Prototipos de alta fidelidad exportados del diseño de interfaz (Figma)
+│   │   ├── 404(1).png                                       # Vista de error de página o recurso no encontrado (RNF-003)
+│   │   ├── Detalle prenda (1).png                           # Vista interactiva con selector de variantes (talla, color y existencias)
+│   │   ├── Panel Admin Tallas.png                           # Back-office: parametrización y administración de atributos de variantes
+│   │   ├── Panel admin categorías.png                       # Back-office: gestión CRUD de categorías maestras del catálogo
+│   │   ├── Panel admin usuarios.png                         # Back-office: control de usuarios internos, roles y bajas lógicas
+│   │   ├── Vista_Admin_FAQ – Administración...png           # Back-office: panel para alta, edición y ordenamiento de preguntas frecuentes
+│   │   ├── Vista_Admin_Inventario – Gestión...png           # Back-office: catálogo administrativo, control de stock y puntos de reposición
+│   │   ├── Vista_Admin_OMS – Gestión de pedidos.png         # Back-office: tablero Kanban/operativo para trazabilidad y despacho de órdenes
+│   │   ├── Vista_Auditoria – Registro de operaciones.png    # Back-office: visor inmutable de logs transaccionales y cambios críticos
+│   │   ├── Vista_Dashboard – Panel de indicadores.png       # Back-office: consolidación de KPIs financieros, volumen y desempeño por vendedora
+│   │   ├── busqueda exitosa1.png                            # Front-office: listado de coincidencias en catálogo tras búsqueda dinámica
+│   │   ├── busqueda sin resultados1.png                     # Front-office: estado vacío y sugerencias ante búsquedas no coincidentes
+│   │   ├── carrito1.png                                     # Front-office: vista de resumen de bolsa, subtotales y control de cantidades
+│   │   ├── catalogo (2).png                                 # Front-office: vitrina pública con filtros por categoría y precio unitario
+│   │   ├── categorias.png                                   # Front-office: menú estructurado de navegación por líneas de prenda
+│   │   └── login1.png                                       # Pantalla de inicio de sesión con control de acceso basado en roles (RBAC)
+│   ├── Historias de Usuario Consolidadas...csv              # Matriz de Historias de Usuario (HU) con criterios de aceptación Gherkin
+│   ├── board.jpg                                            # Tablero visual / Storyboard del recorrido del usuario
+│   ├── diccionariodatos.md                                  # Especificación técnica formal de los 112 atributos y reglas de la base de datos
+│   └── matrizrfrn.csv                                       # Matriz tabular de Requisitos Funcionales y No Funcionales (ISO/IEC 25010)
+├── src/                                                     # Código fuente de la lógica de negocio y servicios modulares
+│   ├── auditoria/                                           # Lógica del Módulo 1 (Trazabilidad y registro de eventos críticos)
+│   │   ├── __init__.py                                      # Inicializador del paquete Python de auditoría
+│   │   └── service.py                                       # Servicio para persistencia inmutable de logs en la tabla `auditoria`
+│   ├── auth/                                                # Lógica del Módulo 1 (Seguridad, control de roles y autenticación)
+│   │   ├── __init__.py                                      # Inicializador del paquete Python de autenticación
+│   │   └── service.py                                       # Servicio de hashing de contraseñas, login y validación de permisos RBAC
+│   ├── carrito/                                             # Lógica del Módulo 3 (Bolsa de compras y reservas temporales)
+│   │   ├── __init__.py                                      # Inicializador del paquete Python de carrito
+│   │   └── service.py                                       # Servicio de cálculo de subtotales y reserva de stock en `detalle_carrito`
+│   ├── catalogo/                                            # Lógica del Módulo 2 (Gestión de catálogo, variantes y stock)
+│   │   ├── __init__.py                                      # Inicializador del paquete Python de catálogo
+│   │   └── service.py                                       # Servicio de consulta con filtros y control de existencias por talla/color
+│   ├── modulos/                                             # Recursos estáticos y prototipos web navegables de apoyo
+│   │   ├── prototipo_catalogo_inventario.html               # Maquetación funcional preliminar del catálogo en HTML/CSS
+│   │   ├── stick.jpg                                        # Recurso gráfico de interfaz de usuario
+│   │   └── stock.jpg                                        # Recurso gráfico de interfaz de usuario
+│   ├── pedidos/                                             # Lógica del Módulo 4 (Gestión OMS, cálculo de totales y WhatsApp)
+│   │   ├── __init__.py                                      # Inicializador del paquete Python de pedidos
+│   │   └── service.py                                       # Servicio para creación de órdenes, asignación de vendedora y payload a WhatsApp
+│   └── __init__.py                                          # Raíz del paquete de módulos del sistema
+├── tests/                                                   # Suite de pruebas automatizadas con enfoque TDD (Test-Driven Development)
+│   ├── unit/                                                # Pruebas unitarias sobre componentes de backend aislados
+│   │   ├── __init__.py                                      # Inicializador del paquete de pruebas unitarias
+│   │   ├── test_auth.py                                     # Casos de prueba: autenticación, restricción de roles y hashing
+│   │   ├── test_carrito.py                                  # Casos de prueba: cálculo de totales, límites de stock y vaciado
+│   │   └── test_pedidos.py                                  # Casos de prueba: formalización de órdenes, estados y payload a WhatsApp
+│   └── __init__.py                                          # Inicializador de la suite general de pruebas
+├── Ficha de Proyecto                                        # Documento administrativo con identificación del proyecto y miembros de equipo
+├── Matriz de requisitos                                     # Acceso directo al repositorio de trazabilidad de requisitos y pruebas
+├── README.md                                                # Ficha técnica, arquitectura y manual oficial del repositorio
+└── requirements.txt                                         # Dependencias y librerías del proyecto para el entorno virtual (pytest)
