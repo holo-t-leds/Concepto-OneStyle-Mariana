@@ -66,7 +66,7 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | Vista / Interfaz | Propósito Técnico | Captura de Diseño |
 | :--- | :--- | :---: |
 | **Inicio de Sesión** | Acceso seguro multi-rol (`RF-003b`). | ![Inicio de Sesión](<docs/mockups/login1.png>) |
-| **Proceso de recuperar contraseña** | Ingreso de correo (`RF-003i, RF-003j`). | ![Ingreso de correo](<docs/mockups/Recuperar1%(1).png>) |
+| **Proceso de recuperar contraseña** | Ingreso de correo (`RF-003i, RF-003j`). | ![Ingreso de correo](<docs/mockups/Recuperar1%20(1).png>) |
 | **Proceso de recuperar contraseña** | Solicitud de envío (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/Recuperar2(1).png>) |
 | **Proceso de recuperar contraseña** | Creación de contraseña (`RF-003i, RF-003j`). | ![Creación de contraseña](<docs/mockups/Recuperar3(1).png>) |
 | **Proceso de recuperar contraseña** | Contraseña cambiada (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/exitosa1.png>) |
