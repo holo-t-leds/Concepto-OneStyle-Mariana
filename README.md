@@ -11,6 +11,11 @@
 
 <u>**OneStyle Mariana**</u> es una plataforma web integral orientada al comercio electrónico y a la gestión operativa de pedidos (OMS) para una tienda de prendas de vestir femeninas. El sistema centraliza el catálogo público dinámico, implementa el control de inventario en tiempo real por variantes de producto (talla y color), automatiza el registro de auditoría transaccional y estructura el proceso de compra con generación de pedidos parametrizados hacia WhatsApp.
 
+### 1.1 Ficha del proyecto
+
+<u>**Ficha de proyecto**</u> La ficha de proyecto es aquella que contiene la información básica en la cuál se basará el proyecto.
+[Ficha de Proyecto](https://docs.google.com/document/d/1ppfRl-d0_CExBpV_6StK5nX_CzcZ6Jub/edit?usp=sharing&ouid=104494591903208453248&rtpof=true&sd=true)
+
 ---
 
 ## 2. Arquitectura de Información y Navegación
