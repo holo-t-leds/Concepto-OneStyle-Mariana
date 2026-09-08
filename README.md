@@ -73,7 +73,7 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | **Proceso de recuperar contraseña** | Token expirado (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/expirado1.png>) |
 | **Catálogo Dinámico** | Visualización por categorías (`RF-008`). | ![Catálogo Dinámico](<docs/mockups/catalogo (2).png>) |
 | **Detalle de Prenda** | Selector de talla, color y stock (`RF-009`). | ![Detalle de Prenda](<docs/mockups/Detalle prenda (1).png>) |
-| **Bolsa de Compras** | Control y vaciado de carrito (`RF-010`). | ![Bolsa de Compras](<docs/mockups/carrito1.png>) |
+| **Bolsa de Compras** | Control y vaciado de carrito (`RF-010`). | ![Bolsa de Compras](<docs/mockups/carrito2.png>) |
 | **Búsqueda con Éxito** | Filtro dinámico de prendas (`RF-008`). | ![Búsqueda con Éxito](<docs/mockups/busqueda exitosa1.png>) |
 | **Sin Resultados** | Retroalimentación de búsqueda (`RF-008`). | ![Sin Resultados](<docs/mockups/busqueda sin resultados1.png>) |
 | **Categorias de la ropa** | Visualización de filtrado por tipo de prenda (`RF-007a`). |![Categorias por prenda](<docs/mockups/categorias.png>) |
