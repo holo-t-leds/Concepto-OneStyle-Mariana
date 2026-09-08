@@ -66,11 +66,11 @@ El diseño UI/UX del sistema se encuentra disponible para su navegación interac
 | Vista / Interfaz | Propósito Técnico | Captura de Diseño |
 | :--- | :--- | :---: |
 | **Inicio de Sesión** | Acceso seguro multi-rol (`RF-003b`). | ![Inicio de Sesión](<docs/mockups/login1.png>) |
-| **Proceso de recuperar contraseña** | Recuperación de contraseña (`RF-003i, RF-003j`). | ![Ingreso de correo](<docs/mockups/Recuperar1.png>) |
-| **Proceso de recuperar contraseña** | Recuperación de contraseña (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/Recuperar2.png>) |
-| **Proceso de recuperar contraseña** | Recuperación de contraseña (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/Recuperar3.png>) |
-| **Proceso de recuperar contraseña** | Recuperación de contraseña (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/exitosa.png>) |
-| **Proceso de recuperar contraseña** | Recuperación de contraseña (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/expirado.png>) |
+| **Proceso de recuperar contraseña** | Ingreso de correo (`RF-003i, RF-003j`). | ![Ingreso de correo](<docs/mockups/Recuperar1%(1).png>) |
+| **Proceso de recuperar contraseña** | Solicitud de envío (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/Recuperar2(1).png>) |
+| **Proceso de recuperar contraseña** | Creación de contraseña (`RF-003i, RF-003j`). | ![Creación de contraseña](<docs/mockups/Recuperar3(1).png>) |
+| **Proceso de recuperar contraseña** | Contraseña cambiada (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/exitosa1.png>) |
+| **Proceso de recuperar contraseña** | Token expirado (`RF-003i, RF-003j`). | ![Solicitud de envio](<docs/mockups/expirado1.png>) |
 | **Catálogo Dinámico** | Visualización por categorías (`RF-008`). | ![Catálogo Dinámico](<docs/mockups/catalogo (2).png>) |
 | **Detalle de Prenda** | Selector de talla, color y stock (`RF-009`). | ![Detalle de Prenda](<docs/mockups/Detalle prenda (1).png>) |
 | **Bolsa de Compras** | Control y vaciado de carrito (`RF-010`). | ![Bolsa de Compras](<docs/mockups/carrito1.png>) |
