@@ -38,7 +38,7 @@ El mapa de navegación define los flujos de interacción del usuario clasificado
 
 ## 3. Modelo de Datos Relacional (Base de Datos)
 
-### 3.1. Diagrama Entidad-Relación (MER)
+### 3.1. Diagrama Relacional (MR)
 
 El esquema relacional garantiza la integridad referencial y el soporte a transacciones concurrentes:
 
