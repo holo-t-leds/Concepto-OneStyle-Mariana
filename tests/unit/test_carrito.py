@@ -64,3 +64,32 @@ def test_vaciar_carrito(carrito, catalogo):
 
     carrito.vaciar_carrito()
     assert len(carrito.get_items()) == 0
+
+def test_impedir_reservar_mas_existencias(carrito, catalogo):
+    cat, var_id = catalogo
+
+    # Hay 10 en stock real inicialmente
+    carrito.agregar_item(var_id, 8)
+    assert cat.variantes[var_id]['stock_reservado'] == 8
+
+    # Intentar reservar 3 más debería fallar, dado que 8 + 3 = 11 > 10
+    with pytest.raises(ValueError, match="Stock insuficiente"):
+        carrito.agregar_item(var_id, 3)
+
+    assert cat.variantes[var_id]['stock_reservado'] == 8
+
+def test_confirmar_liberacion_stock(carrito, catalogo):
+    cat, var_id = catalogo
+
+    carrito.agregar_item(var_id, 5)
+    assert cat.variantes[var_id]['stock_reservado'] == 5
+
+    # Remover 2
+    carrito.remover_item(var_id, 2)
+    assert cat.variantes[var_id]['stock_reservado'] == 3
+    assert carrito.get_items()[var_id] == 3
+
+    # Remover el resto
+    carrito.remover_item(var_id)
+    assert cat.variantes[var_id]['stock_reservado'] == 0
+    assert var_id not in carrito.get_items()

@@ -28,6 +28,9 @@ entity "usuarios" as usuarios {
     apellido : VARCHAR(100)
     email : VARCHAR(150) <<UNIQUE>>
     contrasena : VARCHAR(255)
+    google_id : VARCHAR(255)
+    reset_token_hash : VARCHAR(255)
+    reset_token_expira : DATETIME
     telefono : VARCHAR(20)
     estado_usuario : BOOLEAN
     fecha_registro : DATETIME
@@ -106,7 +109,8 @@ entity "inventario" as inventario {
     * id_inventario : INT <<PK>>
     --
     * fk_id_variante : INT <<FK>>
-    stock_disponible : INT
+    stock_real : INT
+    stock_reservado : INT
     punto_reposicion : INT
 }
 
@@ -142,7 +146,7 @@ entity "pedido" as pedido {
     --
     * fk_id_usuario : INT <<FK>>
     fk_id_vendedora_asig : INT <<FK>>
-    estado_pedido : VARCHAR(50)
+    estado_pedido : ENUM('Registrado', 'Confirmado', 'En Empaque', 'Despachado', 'Entregado', 'Cancelado')
     fecha_pedido : DATETIME
     fecha_entrega : DATETIME
     total_pedido : DECIMAL(12,2)

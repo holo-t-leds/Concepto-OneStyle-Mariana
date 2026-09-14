@@ -1,0 +1,35 @@
+@startuml
+title Ciclo de Vida del Pedido - G.C.L. OneStyle Mariana
+
+[*] --> Registrado : crear_pedido()
+
+Registrado --> Confirmado : transicionar_estado('Confirmado')
+Registrado --> Cancelado : transicionar_estado('Cancelado')
+
+Confirmado --> En_Empaque : transicionar_estado('En Empaque')
+Confirmado --> Cancelado : transicionar_estado('Cancelado')
+
+En_Empaque --> Despachado : transicionar_estado('Despachado')
+
+Despachado --> Entregado : transicionar_estado('Entregado')
+
+Entregado --> [*]
+Cancelado --> [*]
+
+note left of Registrado
+  Stock Reservado (+)
+end note
+
+note right of Confirmado
+  Stock Reservado (-)
+  Stock Real (-)
+end note
+
+note right of Cancelado
+  Si viene de Registrado:
+    Stock Reservado (-)
+  Si viene de Confirmado:
+    Stock Real (+)
+end note
+
+@enduml

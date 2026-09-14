@@ -34,7 +34,7 @@ def test_crear_pedido(pedidos, catalogo):
     pedido = pedidos.pedidos[pedido_id]
     assert pedido['usuario_id'] == 1
     assert pedido['total'] == 180.0
-    assert pedido['estado'] == 'Pendiente'
+    assert pedido['estado'] == 'Registrado'
 
 def test_crear_pedido_vacio(pedidos):
     with pytest.raises(ValueError, match="El carrito está vacío."):
@@ -67,3 +67,49 @@ def test_generar_enlace_whatsapp(pedidos, catalogo):
 def test_calcular_total_vacio(pedidos):
     total = pedidos.calcular_total({})
     assert total == 0.0
+
+def test_transicion_secuencial_estricta(pedidos, catalogo):
+    cat, var_id1, _ = catalogo
+    items = {var_id1: 2}
+    # Simulate reserving stock
+    cat.variantes[var_id1]['stock_reservado'] += 2
+
+    pedido_id = pedidos.crear_pedido(usuario_id=1, items_carrito=items)
+
+    assert pedidos.pedidos[pedido_id]['estado'] == 'Registrado'
+
+    pedidos.transicionar_estado(pedido_id, 'Confirmado')
+    assert pedidos.pedidos[pedido_id]['estado'] == 'Confirmado'
+    assert cat.variantes[var_id1]['stock_reservado'] == 0
+    assert cat.variantes[var_id1]['stock_real'] == 8
+
+    pedidos.transicionar_estado(pedido_id, 'En Empaque')
+    assert pedidos.pedidos[pedido_id]['estado'] == 'En Empaque'
+
+    pedidos.transicionar_estado(pedido_id, 'Despachado')
+    assert pedidos.pedidos[pedido_id]['estado'] == 'Despachado'
+
+    pedidos.transicionar_estado(pedido_id, 'Entregado')
+    assert pedidos.pedidos[pedido_id]['estado'] == 'Entregado'
+
+def test_rechazo_saltos_ilegales(pedidos, catalogo):
+    _, var_id1, _ = catalogo
+    items = {var_id1: 1}
+    pedido_id = pedidos.crear_pedido(usuario_id=1, items_carrito=items)
+
+    with pytest.raises(ValueError, match="Transición inválida"):
+        pedidos.transicionar_estado(pedido_id, 'Despachado')
+
+    pedidos.transicionar_estado(pedido_id, 'Confirmado')
+
+    with pytest.raises(ValueError, match="Transición inválida"):
+        pedidos.transicionar_estado(pedido_id, 'Entregado')
+
+def test_formateo_codificacion_url_whatsapp(pedidos, catalogo):
+    _, var_id1, _ = catalogo
+    items = {var_id1: 1}
+    pedido_id = pedidos.crear_pedido(usuario_id=1, items_carrito=items)
+    enlace = pedidos.generar_enlace_whatsapp(pedido_id, "573001234567")
+
+    assert "%20" in enlace or "%23" in enlace
+    assert enlace.startswith("https://wa.me/573001234567?text=")

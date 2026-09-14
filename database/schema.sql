@@ -12,7 +12,10 @@ CREATE TABLE IF NOT EXISTS usuarios (
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
-    contrasena VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NULL,
+    google_id VARCHAR(255) NULL UNIQUE,
+    reset_token_hash VARCHAR(255) NULL,
+    reset_token_expira DATETIME NULL,
     telefono VARCHAR(20),
     estado_usuario BOOLEAN DEFAULT TRUE,
     fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -65,7 +68,7 @@ CREATE TABLE IF NOT EXISTS producto (
 CREATE TABLE IF NOT EXISTS producto_imagen (
     id_imagen INT AUTO_INCREMENT PRIMARY KEY,
     fk_id_producto INT NOT NULL,
-    url_imagen VARCHAR(255) NOT NULL,
+    url_imagen VARCHAR(500) NOT NULL,
     formato VARCHAR(10),
     es_principal BOOLEAN DEFAULT FALSE,
     fecha_carga DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -86,7 +89,8 @@ CREATE TABLE IF NOT EXISTS producto_atributo (
 CREATE TABLE IF NOT EXISTS inventario (
     id_inventario INT AUTO_INCREMENT PRIMARY KEY,
     fk_id_variante INT NOT NULL,
-    stock_disponible INT NOT NULL DEFAULT 0,
+    stock_real INT NOT NULL,
+    stock_reservado INT NOT NULL DEFAULT 0,
     punto_reposicion INT NOT NULL DEFAULT 5,
     FOREIGN KEY (fk_id_variante) REFERENCES producto_atributo(id_variante)
 );
@@ -115,7 +119,7 @@ CREATE TABLE IF NOT EXISTS pedido (
     id_pedido INT AUTO_INCREMENT PRIMARY KEY,
     fk_id_usuario INT NOT NULL,
     fk_id_vendedora_asig INT,
-    estado_pedido VARCHAR(50) NOT NULL,
+    estado_pedido ENUM('Registrado', 'Confirmado', 'En Empaque', 'Despachado', 'Entregado', 'Cancelado') NOT NULL DEFAULT 'Registrado',
     fecha_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
     fecha_entrega DATETIME,
     total_pedido DECIMAL(12,2) NOT NULL,

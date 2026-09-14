@@ -1,0 +1,37 @@
+@startuml
+title Secuencia Checkout y Generación de WhatsApp - G.C.L. OneStyle Mariana
+
+actor Clienta
+participant Frontend
+participant PedidosService
+database BaseDeDatos
+participant API_WhatsApp
+
+Clienta -> Frontend: Selecciona "Confirmar Compra"
+activate Frontend
+
+Frontend -> PedidosService: crear_pedido(usuario_id, items_carrito)
+activate PedidosService
+
+PedidosService -> PedidosService: calcular_total(items_carrito)
+PedidosService -> BaseDeDatos: INSERT pedido (estado='Registrado')
+activate BaseDeDatos
+BaseDeDatos --> PedidosService: pedido_id
+deactivate BaseDeDatos
+
+PedidosService --> Frontend: pedido_id
+deactivate PedidosService
+
+Frontend -> PedidosService: generar_enlace_whatsapp(pedido_id, telefono_vendedora)
+activate PedidosService
+PedidosService -> PedidosService: urllib.parse.quote(mensaje)
+PedidosService --> Frontend: url_whatsapp_codificada
+deactivate PedidosService
+
+Frontend -> API_WhatsApp: Abrir link (url_whatsapp_codificada)
+activate API_WhatsApp
+API_WhatsApp --> Clienta: Inicia chat prellenado
+deactivate API_WhatsApp
+
+deactivate Frontend
+@enduml
