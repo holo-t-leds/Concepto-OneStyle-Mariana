@@ -169,6 +169,10 @@ El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (R
 │   ├── diagramaactividades/                                 # Modelado dinámico procedimental y lógica de control
 │   │   ├── act diag.png                                     # Renderizado visual del flujo de actividades y decisiones del checkout
 │   │   └── actdi.puml                                       # Código PlantUML del diagrama de actividades con swimlanes por rol
+│   ├── diagramaestados/                                     # Modelado de máquina de estados para entidades complejas
+│   │   └── estados_pedido.puml                              # Código PlantUML del ciclo de vida y transiciones del Pedido
+│   ├── secuencia/                                           # Modelado de secuencias temporales e interacción sistémica
+│   │   └── secuencia_checkout.puml                          # Código PlantUML del flujo de checkout y API de WhatsApp
 │   ├── ent relacion/                                        # Modelado conceptual y lógico de base de datos
 │   │   ├── ent.puml                                         # Código fuente PlantUML del Modelo Entidad-Relación (20 entidades)
 │   │   └── entidad.png                                      # Renderizado gráfico de la topología relacional y llaves foráneas

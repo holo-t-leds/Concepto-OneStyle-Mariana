@@ -40,7 +40,10 @@ Este diccionario de datos detalla la totalidad de las entidades físicas impleme
 | `nombre` | VARCHAR(100) | - | No | Nombre de pila del usuario registrado. |
 | `apellido` | VARCHAR(100) | - | No | Apellido del usuario registrado. |
 | `email` | VARCHAR(150) | - | No | Correo electrónico único utilizado como identificador de inicio de sesión. |
-| `contrasena` | VARCHAR(255) | - | No | Contraseña encriptada bajo algoritmo robusto (bcrypt). |
+| `contrasena` | VARCHAR(255) | - | Sí | Contraseña encriptada bajo algoritmo robusto (bcrypt). Permite nulos para auth federado. |
+| `google_id` | VARCHAR(255) | - | Sí | Identificador único de cuenta Google para OAuth. |
+| `reset_token_hash` | VARCHAR(255) | - | Sí | Hash del token de recuperación de contraseña. |
+| `reset_token_expira` | DATETIME | - | Sí | Fecha y hora de expiración del token de recuperación. |
 | `telefono` | VARCHAR(20) | - | Sí | Número telefónico o de contacto del usuario. |
 | `estado_usuario` | BOOLEAN | - | No | Estado lógico del usuario (TRUE = Activo, FALSE = Inactivo/Baja lógica). Default TRUE. |
 | `fecha_registro` | DATETIME | - | No | Marca temporal de registro inicial en la plataforma. Default CURRENT_TIMESTAMP. |
@@ -120,7 +123,7 @@ Este diccionario de datos detalla la totalidad de las entidades físicas impleme
 | :--- | :--- | :---: | :---: | :--- |
 | `id_imagen` | INT | PK | No | Identificador único autoincremental de la imagen de soporte. |
 | `fk_id_producto` | INT | FK | No | Llave foránea que asocia la imagen a producto(id_producto). |
-| `url_imagen` | VARCHAR(255) | - | No | Ruta de almacenamiento local o URL en CDN del recurso gráfico. |
+| `url_imagen` | VARCHAR(500) | - | No | Ruta de almacenamiento local o URL en CDN del recurso gráfico (ej. Cloudinary). |
 | `formato` | VARCHAR(10) | - | Sí | Extensión o formato MIME de la imagen (ej. WEBP, PNG, JPG). |
 | `es_principal` | BOOLEAN | - | No | Indicador booleano (TRUE = Imagen de portada, FALSE = Imagen secundaria). Default FALSE. |
 | `fecha_carga` | DATETIME | - | No | Marca temporal de carga del archivo al sistema. Default CURRENT_TIMESTAMP. |
@@ -147,7 +150,8 @@ Este diccionario de datos detalla la totalidad de las entidades físicas impleme
 | :--- | :--- | :---: | :---: | :--- |
 | `id_inventario` | INT | PK | No | Identificador único autoincremental del registro de stock. |
 | `fk_id_variante` | INT | FK | No | Llave foránea única hacia producto_atributo(id_variante). Relación 1:1. |
-| `stock_disponible` | INT | - | No | Cantidad física real en bodega apta para venta inmediata. Default 0. |
+| `stock_real` | INT | - | No | Cantidad física real total en bodega. |
+| `stock_reservado` | INT | - | No | Cantidad de existencias reservadas temporalmente. Default 0. |
 | `punto_reposicion` | INT | - | No | Nivel mínimo de existencias para detonar alertas de compra preventiva. Default 5. |
 
 ---
@@ -187,7 +191,7 @@ Este diccionario de datos detalla la totalidad de las entidades físicas impleme
 | `id_pedido` | INT | PK | No | Identificador único autoincremental del pedido. |
 | `fk_id_usuario` | INT | FK | No | Llave foránea hacia usuarios(id_usuario) que realizó la compra (Clienta). |
 | `fk_id_vendedora_asig` | INT | FK | Sí | Llave foránea hacia usuarios(id_usuario) que gestiona y asesora el pedido (Vendedora). |
-| `estado_pedido` | VARCHAR(50) | - | No | Estado logístico actual (Pendiente de Pago, Confirmado, En Empaque, Despachado, Entregado, Cancelado). |
+| `estado_pedido` | ENUM | - | No | Estado logístico actual ('Registrado', 'Confirmado', 'En Empaque', 'Despachado', 'Entregado', 'Cancelado'). Default 'Registrado'. |
 | `fecha_pedido` | DATETIME | - | No | Marca temporal de confirmación del pedido. Default CURRENT_TIMESTAMP. |
 | `fecha_entrega` | DATETIME | - | Sí | Fecha y hora pactada o efectiva de entrega de la mercancía. |
 | `total_pedido` | DECIMAL(12,2) | - | No | Importe total consolidado a pagar por la clienta. |

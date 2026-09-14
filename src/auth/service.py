@@ -29,7 +29,10 @@ class AuthService:
             'apellido': apellido,
             'email': email,
             'pwd_hash': self._hash_password(contrasena),
-            'rol': 'Clienta'
+            'rol': 'Clienta',
+            'google_id': None,
+            'reset_token_hash': None,
+            'reset_token_expira': None
         }
         self.user_id_counter += 1
         return user_id
@@ -61,3 +64,68 @@ class AuthService:
 
         user_id = self.sesiones[token]['user_id']
         return self.usuarios[user_id]['rol']
+
+    def google_oauth_verify(self, id_token: str) -> dict:
+        """
+        Stub function to verify Google OAuth token.
+        In a real application, this would use google-auth or similar.
+        Returns mock user data.
+        """
+        if not id_token or id_token == "invalid":
+            raise ValueError("Token de Google inválido.")
+
+        return {
+            "email": "test@gmail.com",
+            "google_id": "google123456",
+            "nombre": "Test",
+            "apellido": "Google"
+        }
+
+    def solicitar_recuperacion(self, email: str) -> str:
+        """
+        Genera un token de recuperación y simula la preparación del email transaccional.
+        """
+        user_id = None
+        for uid, user in self.usuarios.items():
+            if user['email'] == email:
+                user_id = uid
+                break
+
+        if not user_id:
+            raise ValueError("El correo electrónico no está registrado.")
+
+        token = str(uuid.uuid4())
+        token_hash = hashlib.sha256(token.encode()).hexdigest()
+
+        self.usuarios[user_id]['reset_token_hash'] = token_hash
+        self.usuarios[user_id]['reset_token_expira'] = datetime.now() + timedelta(minutes=15)
+
+        # Simula la llamada a la API de Resend u otra
+        # print(f"Preparando envío de correo a {email} con token {token}")
+
+        return token
+
+    def restablecer_password(self, token: str, nueva_password: str):
+        """
+        Valida el token de recuperación y establece la nueva contraseña.
+        """
+        if len(nueva_password) < 8:
+            raise ValueError("La nueva contraseña debe tener al menos 8 caracteres.")
+
+        token_hash = hashlib.sha256(token.encode()).hexdigest()
+
+        for user_id, user_data in self.usuarios.items():
+            if user_data.get('reset_token_hash') == token_hash:
+                if datetime.now() > user_data['reset_token_expira']:
+                    self.usuarios[user_id]['reset_token_hash'] = None
+                    self.usuarios[user_id]['reset_token_expira'] = None
+                    raise ValueError("El token de recuperación ha expirado.")
+
+                # Update password
+                self.usuarios[user_id]['pwd_hash'] = self._hash_password(nueva_password)
+                # Invalidate token immediately
+                self.usuarios[user_id]['reset_token_hash'] = None
+                self.usuarios[user_id]['reset_token_expira'] = None
+                return True
+
+        raise ValueError("Token de recuperación inválido.")
