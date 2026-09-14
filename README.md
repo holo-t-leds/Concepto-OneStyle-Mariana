@@ -42,7 +42,7 @@ El mapa de navegación define los flujos de interacción del usuario clasificado
 
 El esquema relacional garantiza la integridad referencial y el soporte a transacciones concurrentes:
 
-![Modelo Entidad Relacion](<docs/ent relacion/entidad.png>)
+![Modelo Entidad Relacion](<docs/ent relacion/ent.png>)
 
 ### 3.2. Scripts SQL de Persistencia
 
