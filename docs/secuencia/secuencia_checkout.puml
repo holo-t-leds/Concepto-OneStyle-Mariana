@@ -1,36 +1,74 @@
 @startuml
-title Secuencia Checkout y Generación de WhatsApp - G.C.L. OneStyle Mariana
+title Secuencia Integral de Checkout, Domicilio y WhatsApp - OneStyle Mariana
 
 actor Clienta
 participant Frontend
+participant AuthService
+participant CarritoService
 participant PedidosService
 database BaseDeDatos
 participant API_WhatsApp
 
-Clienta -> Frontend: Selecciona "Confirmar Compra"
+== 1. Verificación de Autenticación y Fusión de Carrito ==
+Clienta -> Frontend: Clic en "Confirmar Compra"
 activate Frontend
 
-Frontend -> PedidosService: crear_pedido(usuario_id, items_carrito)
+alt No tiene sesión activa (Visitante con session_id)
+    Frontend -> Frontend: Despliega modal de autenticación
+    Clienta -> Frontend: Inicia sesión (Credenciales locales o Google OAuth)
+    Frontend -> AuthService: login_o_google(token)
+    activate AuthService
+    AuthService --> Frontend: usuario_id, token_sesion
+    deactivate AuthService
+    
+    Frontend -> CarritoService: asociar_carrito_a_usuario(session_id, usuario_id)
+    activate CarritoService
+    CarritoService -> BaseDeDatos: UPDATE carrito SET id_usuario = :uid WHERE session_id = :sid
+    CarritoService --> Frontend: carrito_sincronizado
+    deactivate CarritoService
+end
+
+== 2. Validación de Vigencia de Reserva (TTL) ==
+Frontend -> CarritoService: verificar_vigencia_reserva(usuario_id)
+activate CarritoService
+CarritoService -> BaseDeDatos: SELECT expires_at FROM inventario_reserva
+alt La reserva temporal expiró (> 15 min)
+    CarritoService --> Frontend: Error ("Reserva expirada por inactividad")
+    Frontend --> Clienta: Notifica y actualiza disponibilidad del catálogo
+else Reserva activa
+    CarritoService --> Frontend: Reserva confirmada
+end
+deactivate CarritoService
+
+== 3. Captura de Datos de Despacho (RF-CRT-003) ==
+Frontend -> Frontend: Despliega formulario de entrega (Dirección, Barrio, Ciudad, Teléfono)
+Clienta -> Frontend: Ingresa datos de entrega y confirma
+Frontend -> Frontend: Valida obligatoriedad de campos
+
+== 4. Procesamiento Transaccional Atómico (RF-PED-001) ==
+Frontend -> PedidosService: procesar_checkout(usuario_id, datos_entrega)
 activate PedidosService
 
-PedidosService -> PedidosService: calcular_total(items_carrito)
-PedidosService -> BaseDeDatos: INSERT pedido (estado='Registrado')
+PedidosService -> BaseDeDatos: START TRANSACTION
 activate BaseDeDatos
-BaseDeDatos --> PedidosService: pedido_id
+PedidosService -> BaseDeDatos: INSERT INTO pedido (id_usuario, total, estado='Registrado')
+PedidosService -> BaseDeDatos: INSERT INTO detalle_pedido (id_pedido, variantes, cantidades)
+PedidosService -> BaseDeDatos: INSERT INTO domicilio (id_pedido, direccion, ciudad, telefono)
+PedidosService -> BaseDeDatos: DELETE FROM detalle_carrito WHERE id_usuario = :uid
+PedidosService -> BaseDeDatos: INSERT INTO auditoria (evento='Creación Pedido Registrado')
+PedidosService -> BaseDeDatos: COMMIT
+BaseDeDatos --> PedidosService: Confirmación transacción OK (pedido_id)
 deactivate BaseDeDatos
 
-PedidosService --> Frontend: pedido_id
-deactivate PedidosService
-
-Frontend -> PedidosService: generar_enlace_whatsapp(pedido_id, telefono_vendedora)
-activate PedidosService
+== 5. Generación de Payload y Redirección a WhatsApp ==
+PedidosService -> PedidosService: construir_resumen_pedido(pedido_id, datos_entrega)
 PedidosService -> PedidosService: urllib.parse.quote(mensaje)
 PedidosService --> Frontend: url_whatsapp_codificada
 deactivate PedidosService
 
-Frontend -> API_WhatsApp: Abrir link (url_whatsapp_codificada)
+Frontend -> API_WhatsApp: Redirige a URL Scheme / Click-to-Chat
 activate API_WhatsApp
-API_WhatsApp --> Clienta: Inicia chat prellenado
+API_WhatsApp --> Clienta: Abre WhatsApp con mensaje estructurado para vendedora
 deactivate API_WhatsApp
 
 deactivate Frontend
