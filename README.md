@@ -134,7 +134,7 @@ El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (R
 
 * 🔗 <u>**Enlace de Historias**</u> https://docs.google.com/spreadsheets/d/1xfWg9ZDWIMq2iLZ2_5q8NksZCSTSHnr9pvF7R4X3xCo/edit?usp=sharing
 
-## 7. Estructura del Repositorio
+## 7. Estructura del Repositorio.
 
 ```text
 ├── .github/
