@@ -14,7 +14,7 @@
 ### 1.1 Ficha del proyecto
 
 <u>**Ficha de proyecto**</u> La ficha de proyecto es aquella que contiene la información básica en la cuál se basará el proyecto.
-[Ficha de Proyecto](https://docs.google.com/document/d/1ppfRl-d0_CExBpV_6StK5nX_CzcZ6Jub/edit?usp=sharing&ouid=104494591903208453248&rtpof=true&sd=true)
+[Ficha de Proyecto](https://docs.google.com/document/d/1ppfRl-d0_CExBpV_6StK5nX_CzcZ6Jub/edit?usp=sharing&ouid=104032637150874233694&rtpof=true&sd=true)
 
 ---
 
@@ -126,7 +126,6 @@ Modelado procedimental de los flujos operativos, decisiones lógicas y transicio
 
 El análisis, especificación y trazabilidad de los 38 Requisitos Funcionales (RF), Requisitos No Funcionales (RNF bajo norma ISO/IEC 25010), Criterios de Aceptación y Casos de Prueba (Caja Blanca, Caja Negra e Integración) se gestionan de manera centralizada en la hoja de cálculo oficial:
 
-* 🔗 <u>**Enlace Oficial:**</u> [Consultar Matriz de Trazabilidad y Requisitos en Google Sheets](https://docs.google.com/spreadsheets/d/1-zfgbSbrLl8uvnGb2gGCj1UpFA3TqOewWFdeeNKSH_s/edit?usp=sharing)
 * 📄 <u>**Matriz de Requisitos:**</u> [Ver documento](https://docs.google.com/spreadsheets/d/1-zfgbSbrLl8uvnGb2gGCj1UpFA3TqOewWFdeeNKSH_s/edit?usp=sharing)
 ---
 
