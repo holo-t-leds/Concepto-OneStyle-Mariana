@@ -1,0 +1,197 @@
+graph ER_OneStyle_Mariana_3FN {
+    layout=fdp;
+    overlap=false;
+    splines=curved;
+    K=1.25;
+    node [fontname="Segoe UI", fontsize=10];
+    edge [fontname="Segoe UI", fontsize=9, color="#64748B"];
+
+    // -------------------------------------------------------------
+    // 1. ENTIDADES NORMALIZADAS (Rectángulos)
+    // -------------------------------------------------------------
+    node [shape=box, style=filled, fillcolor="#FEF3C7", color="#D97706", fontcolor="#78350F", penwidth=1.5];
+    CATEGORIAS; PRODUCTO; TALLAS; COLORES; PRODUCTO_ATRIBUTO; PRODUCTO_IMAGEN; INVENTARIO;
+    ROLES; USUARIOS; AUDITORIA;
+    CARRITO; DETALLE_CARRITO; PEDIDO; DETALLE_PEDIDO; HISTORIAL_PEDIDO; DOMICILIO; CIUDADES;
+    CATEGORIAS_FAQ; FAQ; CONFIGURACION_SOPORTE; REPORTE;
+
+    // -------------------------------------------------------------
+    // 2. RELACIONES (Rombos con Verbos Semánticos)
+    // -------------------------------------------------------------
+    node [shape=diamond, style=filled, fillcolor="#DBEAFE", color="#2563EB", fontcolor="#1E40AF", penwidth=1.2, height=0.6, width=1.1];
+    clasifica; descompone_en; aplica_dimension; aplica_tonalidad; posee_galeria; controla_stock;
+    asigna_perfil; traza_accion;
+    gestiona_sesion; contiene_items; vincula_item_carrito; realiza_como_clienta; asignada_vendedora;
+    genera_lineas; vincula_item_pedido; registra_estados; despacha_hacia; radica_en;
+    agrupa_tematica; parametriza; genera_metricas;
+
+    // -------------------------------------------------------------
+    // 3. ATRIBUTOS (Óvalos - PKs en negrita/dorado, atributos atómicos)
+    // -------------------------------------------------------------
+    // Estilo para Claves Primarias (PK)
+    node [shape=ellipse, style=filled, fillcolor="#FDE68A", color="#D97706", fontcolor="#78350F", height=0.35, width=0.8, penwidth=1.3];
+    cat_pk [label="<B>id_categoria</B>"];
+    p_pk [label="<B>id_producto</B>"];
+    t_pk [label="<B>id_talla</B>"];
+    c_pk [label="<B>id_color</B>"];
+    pa_pk [label="<B>id_atributo</B>"];
+    inv_pk [label="<B>id_inventario</B>"];
+    img_pk [label="<B>id_imagen</B>"];
+    u_pk [label="<B>id_usuario</B>"];
+    r_pk [label="<B>id_rol</B>"];
+    aud_pk [label="<B>id_auditoria</B>"];
+    car_pk [label="<B>id_carrito</B>"];
+    dc_pk [label="<B>id_detalle_carrito</B>"];
+    ped_pk [label="<B>id_pedido</B>"];
+    dp_pk [label="<B>id_detalle_pedido</B>"];
+    hp_pk [label="<B>id_historial</B>"];
+    dom_pk [label="<B>id_domicilio</B>"];
+    ciu_pk [label="<B>id_ciudad</B>"];
+    faq_pk [label="<B>id_faq</B>"];
+    cfq_pk [label="<B>id_categoria_faq</B>"];
+    cs_pk [label="<B>id_configuracion</B>"];
+    rep_pk [label="<B>id_reporte</B>"];
+
+    // Estilo para Atributos Convencionales (1FN y 2FN)
+    node [shape=ellipse, style=filled, fillcolor="#F8FAFC", color="#94A3B8", fontcolor="#0F172A", height=0.35, width=0.8, penwidth=1.0];
+    
+    // Categorias & Producto
+    cat_nom [label="nombre_categoria"];
+    CATEGORIAS -- { cat_pk cat_nom };
+
+    p_nom [label="nombre_producto"]; p_precio [label="precio_base"]; p_vis [label="estado_visibilidad"];
+    PRODUCTO -- { p_pk p_nom p_precio p_vis };
+
+    // Tallas & Colores
+    t_nom [label="nombre_talla"];
+    TALLAS -- { t_pk t_nom };
+
+    c_nom [label="nombre_color"]; c_hex [label="codigo_hex"];
+    COLORES -- { c_pk c_nom c_hex };
+
+    pa_est [label="estado"];
+    PRODUCTO_ATRIBUTO -- { pa_pk pa_est };
+
+    // Inventario (3FN: Separación física vs reserva para cálculo determinista)
+    inv_real [label="stock_real"]; inv_res [label="stock_reservado"]; inv_rep [label="punto_reposicion"];
+    INVENTARIO -- { inv_pk inv_real inv_res inv_rep };
+
+    // Galería
+    img_url [label="url_imagen"]; img_pri [label="es_principal"];
+    PRODUCTO_IMAGEN -- { img_pk img_url img_pri };
+
+    // Usuarios (Atributos atómicos, soporte OAuth)
+    u_nom [label="nombre"]; u_ape [label="apellido"]; u_email [label="email"]; u_pwd [label="pwd_hash"];
+    u_google [label="google_id"]; u_tok [label="reset_token_hash"]; u_exp [label="reset_token_expira"];
+    USUARIOS -- { u_pk u_nom u_ape u_email u_pwd u_google u_tok u_exp };
+
+    // Roles & Auditoría
+    r_nom [label="nombre_rol"];
+    ROLES -- { r_pk r_nom };
+
+    aud_acc [label="tipo_accion"]; aud_tab [label="tabla_afectada"]; aud_fec [label="fecha_accion"];
+    AUDITORIA -- { aud_pk aud_acc aud_tab aud_fec };
+
+    // Carrito
+    car_est [label="estado"]; car_fec [label="fecha_creacion"];
+    CARRITO -- { car_pk car_est car_fec };
+
+    dc_cant [label="cantidad"]; dc_pre [label="precio_congelado"];
+    DETALLE_CARRITO -- { dc_pk dc_cant dc_pre };
+
+    // Pedido (3FN: total_pedido se calcula sum(cant*precio), no se almacena aquí)
+    ped_est [label="estado_pedido"]; ped_fec [label="fecha_pedido"]; ped_wpp [label="url_whatsapp"];
+    PEDIDO -- { ped_pk ped_est ped_fec ped_wpp };
+
+    dp_cant [label="cantidad"]; dp_pre [label="precio_historico"];
+    DETALLE_PEDIDO -- { dp_pk dp_cant dp_pre };
+
+    hp_ant [label="estado_anterior"]; hp_nue [label="estado_nuevo"]; hp_fec [label="fecha_hora"];
+    HISTORIAL_PEDIDO -- { hp_pk hp_ant hp_nue hp_fec };
+
+    // Despacho y Ubicación Normalizada (3FN)
+    dom_dir [label="direccion_exacta"]; dom_bar [label="barrio"]; dom_tel [label="telefono_contacto"];
+    DOMICILIO -- { dom_pk dom_dir dom_bar dom_tel };
+
+    ciu_nom [label="nombre_ciudad"]; ciu_dep [label="departamento"];
+    CIUDADES -- { ciu_pk ciu_nom ciu_dep };
+
+    // Soporte y FAQ
+    faq_pre [label="pregunta"]; faq_res [label="respuesta"]; faq_ord [label="orden_despliegue"];
+    FAQ -- { faq_pk faq_pre faq_res faq_ord };
+
+    cfq_nom [label="nombre_categoria"];
+    CATEGORIAS_FAQ -- { cfq_pk cfq_nom };
+
+    cs_tel [label="telefono_soporte"]; cs_msg [label="mensaje_defecto"];
+    CONFIGURACION_SOPORTE -- { cs_pk cs_tel cs_msg };
+
+    rep_tip [label="tipo_reporte"]; rep_gen [label="fecha_generacion"];
+    REPORTE -- { rep_pk rep_tip rep_gen };
+
+    // -------------------------------------------------------------
+    // 4. CONEXIONES Y CARDINALIDADES FORMALES
+    // -------------------------------------------------------------
+    CATEGORIAS -- clasifica [label="1"];
+    clasifica -- PRODUCTO [label="N"];
+
+    PRODUCTO -- descompone_en [label="1"];
+    descompone_en -- PRODUCTO_ATRIBUTO [label="N"];
+
+    TALLAS -- aplica_dimension [label="1"];
+    aplica_dimension -- PRODUCTO_ATRIBUTO [label="N"];
+
+    COLORES -- aplica_tonalidad [label="1"];
+    aplica_tonalidad -- PRODUCTO_ATRIBUTO [label="N"];
+
+    PRODUCTO -- posee_galeria [label="1"];
+    posee_galeria -- PRODUCTO_IMAGEN [label="N"];
+
+    PRODUCTO_ATRIBUTO -- controla_stock [label="1"];
+    controla_stock -- INVENTARIO [label="1"];
+
+    ROLES -- asigna_perfil [label="1"];
+    asigna_perfil -- USUARIOS [label="N"];
+
+    USUARIOS -- traza_accion [label="1"];
+    traza_accion -- AUDITORIA [label="N"];
+
+    USUARIOS -- gestiona_sesion [label="1"];
+    gestiona_sesion -- CARRITO [label="N"];
+
+    CARRITO -- contiene_items [label="1"];
+    contiene_items -- DETALLE_CARRITO [label="N"];
+
+    PRODUCTO_ATRIBUTO -- vincula_item_carrito [label="1"];
+    vincula_item_carrito -- DETALLE_CARRITO [label="N"];
+
+    USUARIOS -- realiza_como_clienta [label="1"];
+    realiza_como_clienta -- PEDIDO [label="N"];
+
+    USUARIOS -- asignada_vendedora [label="1"];
+    asignada_vendedora -- PEDIDO [label="N"];
+
+    PEDIDO -- genera_lineas [label="1"];
+    genera_lineas -- DETALLE_PEDIDO [label="N"];
+
+    PRODUCTO_ATRIBUTO -- vincula_item_pedido [label="1"];
+    vincula_item_pedido -- DETALLE_PEDIDO [label="N"];
+
+    PEDIDO -- registra_estados [label="1"];
+    registra_estados -- HISTORIAL_PEDIDO [label="N"];
+
+    PEDIDO -- despacha_hacia [label="1"];
+    despacha_hacia -- DOMICILIO [label="1"];
+
+    DOMICILIO -- radica_en [label="N"];
+    radica_en -- CIUDADES [label="1"];
+
+    CATEGORIAS_FAQ -- agrupa_tematica [label="1"];
+    agrupa_tematica -- FAQ [label="N"];
+
+    CONFIGURACION_SOPORTE -- parametriza [label="1"];
+    parametriza -- PEDIDO [label="1"];
+
+    USUARIOS -- genera_metricas [label="1"];
+    genera_metricas -- REPORTE [label="N"];
+}
