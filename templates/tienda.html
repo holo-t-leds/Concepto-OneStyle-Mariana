@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneStyle Mariana - Catálogo</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; margin: 0; padding: 20px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); width: 280px; overflow: hidden; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; }
+        .badge { background: #e0e7ff; color: #4338ca; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: bold; width: fit-content; }
+        .title { font-size: 18px; font-weight: bold; margin: 10px 0 5px; color: #1e293b; }
+        .price { font-size: 20px; font-weight: bold; color: #059669; margin-bottom: 15px; }
+        .btn-comprar { background: #d97706; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: center; text-decoration: none; }
+        .btn-comprar:hover { background: #b45309; }
+        .alert { background: #fee2e2; color: #991b1b; padding: 10px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>👗 OneStyle Mariana</h1>
+        <p>Catálogo conectado en tiempo real a MySQL</p>
+    </div>
+
+    <!-- Si se pasó algún mensaje de éxito o error -->
+    {% if mensaje %}
+        <div class="alert">{{ mensaje }}</div>
+    {% endif %}
+
+    <div class="grid">
+        {% for p in productos %}
+        <div class="card">
+            <div>
+                <span class="badge">{{ p.nombre_categoria }}</span>
+                <div class="title">{{ p.nombre_producto }}</div>
+                <div class="price">${{ "{:,.2f}".format(p.precio_detallista) }}</div>
+            </div>
+            
+            <form action="/comprar" method="POST">
+                <input type="hidden" name="id_variante" value="1">
+                <label for="cant_{{ p.id_producto }}" style="font-size: 13px;">Cantidad:</label>
+                <input type="number" id="cant_{{ p.id_producto }}" name="cantidad" value="1" min="1" max="20" style="width: 50px; padding: 4px; margin-bottom: 10px;">
+                <button type="submit" class="btn-comprar" style="width: 100%;">Comprar prenda</button>
+            </form>
+        </div>
+        {% else %}
+        <p>No hay prendas registradas en la base de datos.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
