@@ -16,3 +16,6 @@ __pycache__/
 .env
 ms.env
 *.env.*
+*.env
+.env
+ms.env
