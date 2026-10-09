@@ -1,2 +1,13 @@
-*.pyc
+venv/
+.venv/
+env/
+
 __pycache__/
+*.py[cod]
+*$py.class
+
+.env
+
+.vscode/
+.idea/
+.DS_Store
